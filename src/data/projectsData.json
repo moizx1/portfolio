@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "title": "TeLead E-Learning App",
+      "description": "Created an e-learning platform frontend using GetX for efficient state management and clean code architecture. Integrated chat and call functionality with Firebase and Agora RTX. Enhanced chat notifications with Firebase Cloud Messaging.",
+      "technologies": ["Flutter", "GetX", "Firebase", "Agora RTX"],
+      "githubLink": "https://github.com/yourusername/telead-elearning",
+      "image": "https://via.placeholder.com/400x300",
+      "liveDemo": "https://yourdemo.com/telead"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio Website",
+      "description": "Designed and developed a personal portfolio website to showcase projects and skills. Implemented a responsive layout with React and Tailwind CSS.",
+      "technologies": ["React", "Tailwind CSS", "JavaScript"],
+      "githubLink": "https://github.com/yourusername/portfolio-website",
+      "image": "https://via.placeholder.com/400x300",
+      "liveDemo": "https://yourportfolio.com"
+    },
+    {
+      "id": 3,
+      "title": "Banking Application",
+      "description": "Built a full-stack banking application using Spring Boot for the backend and React for the frontend. Implemented account management, transaction tracking, and secure authentication using JWT.",
+      "technologies": ["React", "Spring Boot", "MySQL", "JWT"],
+      "githubLink": "https://github.com/yourusername/banking-app",
+      "image": "https://via.placeholder.com/400x300",
+      "liveDemo": "https://yourdemo.com/banking"
+    },
+    {
+      "id": 4,
+      "title": "YOLO Food Ordering Platform",
+      "description": "Developed an on-demand food ordering platform. Integrated customer and vendor apps, secure authentication with OAuth 2.0, and custom recipe creation with AI assistance.",
+      "technologies": ["React", "Spring Boot", "OAuth 2.0", "MySQL"],
+      "githubLink": "https://github.com/yourusername/yolo-food-ordering",
+      "image": "https://via.placeholder.com/400x300",
+      "liveDemo": "https://yourdemo.com/yolo"
+    }
+  ]
+  
