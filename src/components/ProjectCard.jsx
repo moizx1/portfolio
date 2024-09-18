@@ -9,7 +9,7 @@ export default function ProjectCard({ project }) {
   };
 
   return (
-    <div className="flex flex-col w-96 font-mono rounded-lg border overflow-hidden justify-between bg-gradient-to-br from-[#010b15] to-blue-900 hover:bg-gradient-to-br hover:from-[#26303a] hover:to-blue-900">
+    <div className="flex flex-col w-96 font-mono rounded-lg border border-blue-400 overflow-hidden justify-between bg-gradient-to-br from-[#010b15] to-blue-900 hover:bg-gradient-to-br hover:from-[#26303a] hover:to-blue-900">
       <div className="p-6">
         <h1 className="text-gray-200 text-2xl font-bold mb-4 underline">
           {project.title}
