@@ -1,7 +1,7 @@
 import Introduction from "./views/Introduction";
 import HoverLinks from "./views/HoverLinks";
 import Projects from "./views/Projects";
-import Experiences from "./views/Experiences";
+import Experience from "./views/Experience";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <HoverLinks />
       <Introduction />
       <Projects />
-      <Experiences />
+      <Experience />
     </>
   );
 }
