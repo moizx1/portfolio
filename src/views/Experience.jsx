@@ -12,7 +12,7 @@ export default function Experience() {
         <div key={experience.id} className={experiences.length-1 === index ? '' : 'mb-6'}>
           {/* Timeline Dot and Date */}
           <div className="-ms-[6.5px] me-3 h-[12px] w-[12px] rounded-full bg-blue-400"></div>
-          {/* Experience Card */}
+          
           <ExperienceCard experience={experience} />
         </div>
       ))}

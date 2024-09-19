@@ -18,13 +18,11 @@ export default function Introduction() {
           React, Flutter, Spring Boot
         </span>
       </div>
-      {/* Icon Section */}
       <div className="flex justify-center items-center relative z-10">
         <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-8 rounded-full">
           <FaCode className="text-6xl text-white" />
         </div>
       </div>
-      {/* Floating Dots Animation */}
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden z-0">
         <div className="floating-dots">
           <div className="dot"></div>
