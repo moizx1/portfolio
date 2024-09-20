@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "institution": "University of Technology",
+      "degree": "Bachelor of Science in Computer Science",
+      "location": "City, Country",
+      "startDate": "September 2015",
+      "endDate": "June 2019",
+      "description": "Focused on software development, algorithms, and database management. Completed projects in web and mobile app development, machine learning, and cloud computing."
+    },
+    {
+      "id": 2,
+      "institution": "High School of Science",
+      "degree": "High School Diploma",
+      "location": "City, Country",
+      "startDate": "September 2011",
+      "endDate": "June 2015",
+      "description": "Graduated with honors, participated in coding clubs and robotics competitions. Developed a keen interest in technology and programming, leading to a Computer Science career."
+    }
+  ]
+  
