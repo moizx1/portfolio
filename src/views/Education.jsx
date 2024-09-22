@@ -4,8 +4,8 @@ import EducationCard from "../components/EducationCard";
 
 export default function Education() {
   return (
-    <div className="min-h-screen flex flex-col items-center">
-      <h1 className="text-5xl font-bold mt-14 mb-4 font-mono">Education</h1>
+    <div className="min-h-screen flex flex-col items-center py-12">
+      <h1 className="text-5xl font-bold mb-4 font-mono">Education</h1>
       <div className="border-e-[0.1235rem] border-blue-600 m-16 w-3/4 sm:w-2/3 md:w-2/4">
         {educationData.map((education, index) => (
           <div
