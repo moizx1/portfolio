@@ -1,0 +1,82 @@
+@import "ft-uif-icons-font.css";
+@import "ft-css-icons.css";
+@import "ft-pure-checkbox.css";
+@import "ft-uic-grid-heading-styles.css";
+@import "ft-uic-grid-helper-styles.css";
+@import "ft-uic-grid-table-styles.css";
+@import "ft-uic-grid-drag-styles.css";
+@import "ft-uic-grid-button-styles.css";
+@import "ft-button.css";
+
+:host {
+  /* @apply --layout-vertical; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  /* @apply --layout-justified; */
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+
+  position: relative;
+  padding: 0;
+  height: 100%;
+
+  --row-header-height: 36px;
+  --row-row-height: 36px;
+  --row-row-height-ml: 64px;
+}
+
+:host([fullscreen]) {
+  height: 100vh;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.grid-total-placeholder {
+  padding: 11px;
+  box-sizing: border-box;
+  border-top: solid 1px var(--ft-grid-border-color);
+  font-weight: 700;
+}
+
+.opaque {
+  opacity: 0.5;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.2) 1px,
+    transparent 1px,
+    transparent 7px
+  );
+  background-size: 10px 10px;
+}
+
+.is-forecast {
+  background-color: var(--ft-uic-grid-forecast-highlight-background);
+  /* box-shadow: rgba(0,0,0,.1) 0 6px 60px; */
+}
+
+/* Invalid cell icon */
+
+.grid-cell.is-invalid {
+  background: var(--ft-uic-grid-invalid-cell-background, #fff5fd);
+}
+
+.grid-cell.grid-cell.is-invalid {
+  position: relative;
+}
+
+.grid-cell.grid-cell.is-invalid i::before {
+  color: var(--ft-red-300);
+  display: inline-block;
+}

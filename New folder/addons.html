@@ -1,0 +1,218 @@
+<!doctype html>
+
+<html lang="en" class="light">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+  <title>ft-uic-input demo</title>
+
+  <script src="../../es6-promise/es6-promise.auto.min.js"></script>
+
+  <!-- <script>window.ShadyDOM = { force: true };</script> -->
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../../paper-button/paper-button.html">
+  <link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+
+  <link rel="import" href="../../ft-uic-form/ft-uic-form.html">
+  <link rel="import" href="../../ft-uif-styles/ft-theme-dark.html">
+  <link rel="import" href="../../ft-uif-styles/ft-theme-light.html">
+  <link rel="import" href="../../ft-uic-icon-button/ft-uic-icon.html">
+  <link rel="import" href="../../ft-uic-icon-button/ft-uic-icon-button.html">
+
+  <link rel="import" href="../ft-uic-input.html">
+  <link rel="import" href="../ft-uic-input-container.html">
+
+  <!-- Demo helper components -->
+  <link rel="import" href="customvalidation.html">
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles">
+
+      .centered {
+        max-width: 800px;
+      }
+
+      #inputForValidation {
+        /* display: inline-block; */
+        width: calc(100% - 75px);
+      }
+
+      paper-icon-button {
+        width: 20px;
+        height: 20px;
+        padding: 0 4px;
+      }
+
+      .custom-error-color {
+        --ft-uic-input-container-invalid-color: goldenrod !important;
+        --ft-uic-input-error-color: goldenrod !important;
+      }
+
+      /* Please note this is CUSTOM styling */
+      .custom-style-extented {
+        --ft-uic-input-prefix: {
+          width: 200px;
+          background-color: #0297DB;
+          color: #fff;
+          margin-left: 0;
+        }
+        --ft-uic-input-suffix: {
+          background-color: #004c77;
+          color: #fff;
+          margin-right: 0;
+        }
+      }
+
+      .custom-suffix-icon {
+        position: absolute;
+        top: calc(50% - .500rem);
+        right: 1rem;
+        color: var(--ft-icon-color);
+        font-size: 1rem;
+        /* Reset is needed */
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </custom-style>
+</head>
+
+<body unresolved>
+  <div class="centered">
+
+    <button type="button" id="themeChanger">Change theme</button>
+    <script>
+      var button = document.querySelector('#themeChanger');
+      button.addEventListener('click', function(e) {
+        let cTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+        let nTheme = cTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.classList.remove(cTheme);
+        document.documentElement.classList.add(nTheme);
+      });
+    </script>
+
+   <h2>Inputs can have prefixes and suffixes</h2>
+    <demo-snippet>
+      <template>
+
+        <ft-uic-input label="Some label" placeholder="Enter an value">
+        </ft-uic-input>
+
+        <!-- Do not use type=number (Check known issues at https://caniuse.com/#feat=form-validation). -->
+        <ft-uic-input label="Total (Number pattern applied)" pattern="[0-9]*" prevent-invalid-input placeholder="Enter an amount">
+          <div slot="prefix">$</div>
+        </ft-uic-input>
+
+        <ft-uic-input label="Your e-mail" placeholder="Enter your e-mail" id="my-input">
+          <ft-uic-icon class="u-icon-color" icon="messages" slot="prefix"></ft-uic-icon>
+        </ft-uic-input>
+
+        <ft-uic-input label="Your e-mail" placeholder="Enter your e-mail">
+          <ft-uic-icon-button
+            slot="suffix"
+            onclick="clearInput();"
+            icon="reject"
+            alt="clear"
+            title="clear"
+            class="u-icon-color"
+            >
+          </ft-uic-icon-button>
+        </ft-uic-input>
+
+        <ft-uic-input label="Your e-mail" placeholder="Enter your e-mail">
+          <div slot="prefix">E-mail</div>
+          <div slot="suffix">@cobase.com</div>
+          <ft-uic-icon-button
+            slot="suffix"
+            onclick="clearInput();"
+            icon="reject"
+            alt="clear"
+            title="clear"
+            class="u-icon-color">
+          </ft-uic-icon-button>
+        </ft-uic-input>
+
+        <ft-uic-input readonly label="Your e-mail (readonly)" value="jorge.schafraad" placeholder="Enter your e-mail">
+          <div slot="prefix">
+            E-mail
+          </div>
+          <div slot="suffix">@cobase.com</div>
+          <ft-uic-icon-button
+            slot="suffix"
+            onclick="clearInput();"
+            icon="reject"
+            alt="clear"
+            title="clear"
+            class="u-icon-color">
+          </ft-uic-icon-button>
+        </ft-uic-input>
+
+        <ft-uic-input disabled label="Your e-mail (disabled)">
+          <div slot="prefix">E-mail</div>
+          <div slot="suffix">@cobase.com</div>
+          <ft-uic-icon-button
+            slot="suffix"
+            onclick="clearInput();"
+            icon="reject"
+            alt="clear"
+            title="clear"
+            class="u-icon-color">
+          </ft-uic-icon-button>
+        </ft-uic-input>
+
+        <ft-uic-input label="Your e-mail (Custom styling)" class="custom-style-extented" placeholder="Enter your e-mail">
+          <div slot="prefix" title="Custom prefix class and long label">Custom prefix class and long label</div>
+          <div slot="suffix">@cobase.com</div>
+        </ft-uic-input>
+
+        <ft-uic-input label="Your e-mail (Validation)" id="validationElement" auto-validate label="text input" required error-message="E-mail is required">
+          <ft-uic-icon class="u-icon-color" icon="messages" slot="prefix"></ft-uic-icon>
+          <span slot="prefix" title="Validate">E-mail</span>
+          <div slot="suffix">@cobase.com</div>
+        </ft-uic-input>
+
+        <button type="button" onclick="validate();">Submit</button>
+
+      </template>
+    </demo-snippet>
+
+
+
+    <h2>Input for custom events</h2>
+    <demo-snippet>
+      <template>
+
+        <ft-uic-input label="Select an address">
+          <ft-uic-icon-button class="custom-suffix-icon" icon="address-book" slot="suffix" onclick="alert('yo')"></ft-uic-icon-button>
+        </ft-uic-input>
+
+      </template>
+    </demo-snippet>
+
+
+
+  </div>
+
+  <script>
+    // eslint-disable-next-line no-unused-vars
+    function validate() {
+      document.getElementById('validationElement').validate();
+    }
+
+    function clearInput() {
+      let elms = document.querySelectorAll('ft-uic-input');
+      elms.forEach(function(element) {
+        element.value = '';
+      });
+    }
+  </script>
+</body>
+
+</html>

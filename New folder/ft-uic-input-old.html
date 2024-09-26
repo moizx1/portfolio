@@ -1,0 +1,248 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-form-element-behavior/iron-form-element-behavior.html">
+<link rel="import" href="ft-uic-input-behavior.html">
+<link rel="import" href="ft-uic-input-char-counter.html">
+<link rel="import" href="ft-uic-input-error.html">
+
+<link rel="import" href="../ft-uic-native-input/ft-uic-native-input.html">
+
+<link rel="import" href="ft-uic-input-container.html">
+<link rel="import" href="ft-uic-input-help-text.html">
+<link rel="import" href="ft-uic-input-shared-styles.html">
+
+<link rel="import" href="../ft-uic-interaction-state-behavior/ft-uic-interaction-state-sync-behavior.html">
+
+<!--
+`<ft-uic-input>` is a single-line text field.
+
+    <ft-uic-input label="Input label"></ft-uic-input>
+
+It may include an optional error message or character counter.
+
+    <ft-uic-input error-message="Invalid input!" label="Input label"></ft-uic-input>
+    <ft-uic-input char-counter label="Input label"></ft-uic-input>
+
+It can also include custom prefix or suffix elements, which are displayed
+before or after the text input itself. In order for an element to be
+considered as a prefix, it must have the `prefix` attribute (and similarly
+for `suffix`).
+
+    <ft-uic-input label="total">
+      <div slot="prefix">$</div>
+      <paper-icon-button slot="suffix" icon="clear"></paper-icon-button>
+    </ft-uic-input>
+
+A `ft-uic-input` can use the native `type=search` or `type=file` features.
+However, since we can't control the native styling of the input (search icon,
+file button, date placeholder, etc.), in these cases the label will be
+automatically floated. The `placeholder` attribute can still be used for
+additional informational text.
+
+    <ft-uic-input label="search!" type="search"
+        placeholder="search for cats" autosave="test" results="5">
+    </ft-uic-input>
+
+See `Polymer.PaperInputBehavior` for more API docs.
+
+### Focus
+
+To focus a paper-input, you can call the native `focus()` method as long as the
+paper input has a tab index.
+
+### Styling
+
+See `Polymer.PaperInputContainer` for a list of custom properties used to style this element.
+The following custom properties and mixins are available for further styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--ft-uic-input-selection-background-color` | background color to be used for selected text | `--ft-blue-300`
+`--ft-uic-input-selection-color` | color to be used for selected text | `--ft-white`
+
+### Imports
+The `ft-uic-input` uses custom versions of `iron-input`, `ft-util-validatable-behavior`, `ft-util-validator-behavior` and `paper-input`.
+Please, do not set your own resolutions for these components.
+
+@demo demo/ft-uic-input-old.html Input
+@demo demo/validators/index.html Apply validators
+@demo demo/old-vs-new/index.html Advantages of ft-uic-input
+-->
+
+<dom-module id="ft-uic-input-old">
+  <template>
+    <style include="ft-uic-input-shared-styles">
+      div[slot="prefix"] ::slotted(*) {
+        margin-right: calc(var(--spacer-horizontal) / 2);
+      }
+
+      ft-uic-native-input {
+        display: block;
+        /* max-width: 100%; */
+        margin: 0 1px; /* to show box shadow on both sides */
+      }
+
+      input {
+        @apply --ft-uic-input-container-style;
+        @apply --ft-uic-input-type-style;
+        box-shadow: var( --ft-uic-input-container-input-box-shadow);
+      }
+
+      input[focused] {
+        box-shadow: var(--ft-uic-input-container-input-box-shadow-focus);
+      }
+
+      /* Input placeholder styles */
+
+      textarea::-webkit-input-placeholder {
+        font-size: var(--ft-uic-input-font-size, .750rem);
+        font-weight: var(--ft-uic-input-font-weight, 400);
+        color: var(--ft-grey-400);
+      }
+
+      textarea:-moz-placeholder {
+        font-size: var(--ft-uic-input-font-size, .750rem);
+        font-weight: var(--ft-uic-input-font-weight, 400);
+        color: var(--ft-grey-400);
+      }
+
+      textarea::-moz-placeholder {
+        font-size: var(--ft-uic-input-font-size, .750rem);
+        font-weight: var(--ft-uic-input-font-weight, 400);
+        color: var(--ft-grey-400);
+      }
+
+      textarea:-ms-input-placeholder {
+        font-size: var(--ft-uic-input-font-size, .750rem);
+        font-weight: var(--ft-uic-input-font-weight, 400);
+        color: var(--ft-grey-400);
+      }
+
+      input::-ms-clear,
+      ::slotted(input::-ms-clear) {
+        display: none !important;
+      }
+    </style>
+
+    <ft-uic-input-container
+      no-label-float="[[noLabelFloat]]"
+      always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]"
+      auto-validate="[[autoValidate]]"
+      force-show-error="[[forceShowError]]"
+      disabled$="[[disabled]]"
+      invalid="[[invalid]]">
+
+      <div hidden$="[[!_hasPrefix]]" id="[[_prefixId]]" slot="prefix">
+        <slot name="prefix"></slot>
+      </div>
+
+      <label hidden$="[[!label]]" for$="[[_nativeInputId]]" slot="label">[[label]]</label>
+
+      <ft-uic-native-input bind-value="{{value}}" id="input" slot="input" native-input-id="{{_nativeInputId}}"
+        allowed-pattern="[[allowedPattern]]" invalid="{{invalid}}" validator="[[validator]]" errors="{{_errors}}"
+        validatable-id="[[validatableId]]" aria-labelledby="[[_ariaLabelledBy]]" aria-describedby="[[_ariaDescribedBy]]"
+        disabled="[[disabled]]" title="[[title]]" type="[[type]]" pattern="[[pattern]]" required="[[required]]"
+        autocomplete="[[autocomplete]]" autofocus="[[autofocus]]" inputmode="[[inputmode]]" minlength="[[minlength]]"
+        maxlength="[[maxlength]]" min="[[min]]" max="[[max]]" step="[[step]]" name="[[name]]" placeholder="[[placeholder]]"
+        readonly="[[readonly]]" list="[[list]]" size="[[size]]" autocapitalize="[[autocapitalize]]" autocorrect="[[autocorrect]]"
+        tabindex="[[tabindex]]" autosave="[[autosave]]" results="[[results]]" accept="[[accept]]" multiple="[[multiple]]">
+      </ft-uic-native-input>
+
+      <slot name="suffix" slot="suffix"></slot>
+      <slot name="after" slot="after"></slot>
+
+      <div class="add-on-content" slot="add-on">
+        <ft-uic-input-help-text persistent="[[helpTextPersistent]]" hidden$="[[!helpText]]" title="[[helpText]]">
+          [[helpText]]
+        </ft-uic-input-help-text>
+
+        <template is="dom-if" if="[[errorMessage]]">
+          <ft-uic-input-error aria-live="assertive" title="[[errorMessage]]">
+            [[errorMessage]]
+          </ft-uic-input-error>
+        </template>
+
+        <template is="dom-if" if="[[!errorMessage]]">
+          <ft-uic-input-error aria-live="assertive" hidden$="[[!_highestPrioErrorMessage]]" title="[[_highestPrioErrorMessage]]">
+            [[_highestPrioErrorMessage]]
+          </ft-uic-input-error>
+        </template>
+
+        <template is="dom-if" if="[[charCounter]]">
+          <ft-uic-input-char-counter max-length="{{maxlength}}" value="{{value}}" slot="add-on"></ft-uic-input-char-counter>
+        </template>
+      </div>
+
+    </ft-uic-input-container>
+
+  </template>
+</dom-module>
+
+<script>
+  Polymer({
+    is: 'ft-uic-input-old',
+
+    properties: {
+      /**
+       * Label of the input
+       */
+      label: String,
+      /**
+       * Type of the input
+       */
+      type: String,
+      /**
+       * Placeholder text
+       */
+      placeholder: String,
+      /**
+       * Boolean if the input is required
+       */
+      required: Boolean,
+      /**
+       * Boolean if the input is disabled
+       */
+      disabled: Boolean,
+      /**
+       * Boolean if the input is read only
+       */
+      readonly: Boolean,
+      /**
+       * Boolean if the input is read only
+       */
+       autofocus: {
+         type: Boolean,
+         value: false
+       },
+       /**
+       * Boolean if the validation has failed
+       */
+       invalid: {
+        type: Boolean,
+        reflectToAttribute: true,
+        notify: true,
+        value: false
+      },
+      _nativeInputId: String
+    },
+
+    behaviors: [
+      Polymer.IronFormElementBehavior,
+      cb.UicInputBehavior,
+      cb.UicInteractionStateSyncBehavior
+    ],
+
+    /**
+     * Returns a reference to the focusable element. Overridden from PaperInputBehavior
+     * to correctly focus the native input.
+     */
+    get _focusableElement() {
+      return this.inputElement.inputElement;
+    },
+
+    get interactionStateElement() {
+      return this.inputElement;
+    }
+
+  });
+</script>

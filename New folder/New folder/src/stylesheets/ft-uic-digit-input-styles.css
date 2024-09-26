@@ -1,0 +1,164 @@
+:host {
+  position: relative;
+  outline: none;
+  display: block;
+  padding: 0;
+  width: 100%;
+  box-sizing: border-box !important;
+}
+
+:host([required]) label::after {
+  content: " *";
+}
+
+.input-field {
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /** overwrite */
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.input-field-container {
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.input-field-container input {
+  text-align: center;
+  border-radius: 0 !important;
+  background: var(--ft-uic-digit-input-background, #fafafa);
+  box-shadow: var(--ft-input-element-box-shadow);
+  height: var(--app-input-height, 30px);
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  @apply --ft-uic-input-field-container;
+}
+
+.input-field-container input:not(:last-of-type) {
+  border-right: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+
+.input-field-container input:focus,
+.input-field-container input.has-value {
+  background: var(--ft-uic-digit-input-focus-background, #fff) !important;
+}
+
+:host([as-nav-element]) .input-field-container {
+  --ft-uic-input-background: transparent;
+  --ft-uic-input-container-input-box-shadow: none;
+  --ft-uic-input-container-input-box-shadow-focus: none;
+}
+
+:host([autocapitalize]) input {
+  text-transform: uppercase;
+}
+
+:host([multiline]) input,
+:host([multiline]) .input-field-container {
+  font-size: 16px;
+  height: var(--app-digit-input-area-height-lg, 48px);
+}
+
+@media all and (-ms-high-contrast: none) {
+  *::-ms-backdrop,
+  :host([multiline]) input,
+  :host([multiline]) .input-field-container {
+    height: 48px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  :host([multiline]) input,
+  :host([multiline]) .input-field-container {
+    font-size: 28px;
+    --app-digit-input-area-height-lg: 60px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  :host([multiline]) input {
+    padding: 0 0.25rem;
+  }
+}
+
+:host([label=""][multiline]) {
+  height: var(--app-digit-input-height-lg, 114px);
+}
+
+:host([label=""][multiline]) label {
+  padding-bottom: 16px;
+}
+
+:host([constrained]) label,
+:host([is-standalone]) label,
+:host([is-standalone]) .add-on-content {
+  text-align: center;
+}
+
+/* Makes for better layout */
+
+:host([constrained]) .input-field-container {
+  margin: 0 auto;
+}
+
+@media (min-width: 769px) {
+  :host([constrained]) .input-field-container {
+    max-width: 80%;
+  }
+}
+
+/* Some resets for Multiline only */
+
+:host([multiline]) .input-field-container input:first-of-type {
+  border-left: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+:host([multiline]) .input-field-container input:last-of-type {
+  border-right: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+:host([multiline]) .input-field-container input {
+  border-top: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+  border-bottom: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+
+:host([multiline]) input {
+  box-shadow: none !important;
+}
+
+.simple-flex {
+  margin: 0;
+  padding: 0;
+}
+
+:host([grouped-by="1"]) input:not(:last-of-type):nth-child(1n + 1),
+:host([grouped-by="2"]) input:not(:last-of-type):nth-child(2n + 2),
+:host([grouped-by="3"]) input:not(:last-of-type):nth-child(3n + 3),
+:host([grouped-by="4"]) input:not(:last-of-type):nth-child(4n + 4),
+:host([grouped-by="5"]) input:not(:last-of-type):nth-child(5n + 5),
+:host([grouped-by="6"]) input:not(:last-of-type):nth-child(6n + 6) {
+  margin-right: 8px;
+  border-right: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+
+:host([grouped-by="1"]) input:not(:last-of-type):nth-child(1n + 2),
+:host([grouped-by="2"]) input:not(:last-of-type):nth-child(2n + 3),
+:host([grouped-by="3"]) input:not(:last-of-type):nth-child(3n + 4),
+:host([grouped-by="4"]) input:not(:last-of-type):nth-child(4n + 5),
+:host([grouped-by="5"]) input:not(:last-of-type):nth-child(5n + 6),
+:host([grouped-by="6"]) input:not(:last-of-type):nth-child(6n + 7) {
+  border-left: solid 1px var(--ft-uic-digit-input-border-color, var(--ft-grey-200));
+}
+
+/* label */
+
+label {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

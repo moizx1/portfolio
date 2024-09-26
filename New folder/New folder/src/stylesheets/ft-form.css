@@ -1,0 +1,115 @@
+
+.ft-input-date-picker-container {
+    width: 100%;
+    color: var(--ft-grey-900); /** color for the vaadin date picker */
+}
+
+.ft-input-date-picker {
+    color: var(--ft-app-text-color); /** override color back to theme */
+}
+
+.ft-form-container {
+    border-radius: .250rem;
+    background-color: var(--ft-form-container-background);
+    box-shadow: rgba(0,0,0,.15) 0px 0px 2px;
+}
+
+.ft-form-header {
+    /* @apply --layout-horizontal; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    /* @apply --layout-center; */
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+
+    /* @apply --layout-justified; */
+    -ms-flex-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+
+    padding: .500rem 1rem;
+    margin: 0;
+    box-sizing: border-box;
+    border-bottom: var(--ft-form-container-border-devider);
+}
+
+.ft-form-header h1,
+.ft-form-header h2,
+.ft-form-header h3,
+.ft-form-header h4,
+.ft-form-header h5,
+.ft-form-header h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.ft-form-body {
+    padding: 1.500rem 1rem;
+    box-sizing: border-box;
+}
+
+.ft-input-flexlist {
+    /* @apply --layout-vertical; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}
+
+.ft-input-flexlist > * {
+    /* @apply --layout-flex-auto; */
+    -ms-flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    flex: 1 1 auto;
+}
+
+/* To make elements blocking, background, rounded corners */
+paper-radio-button.ft-blocked-background,
+paper-checkbox.ft-blocked-background {
+    display: block;
+    width: 100%;
+    border-radius: .250rem;
+    background-color: var(--ft-blocked-background);
+    padding: .500rem 1rem;
+    box-sizing: border-box;
+    margin-bottom: .500rem;
+}
+
+/* Form flex */
+
+@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+    .form-flex--horizontal {
+    width: 100%;
+    min-height: 82px;
+    }
+}
+
+@media(min-width: 1140px) {
+    .form-flex--horizontal {
+    /* @apply --layout-horizontal; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    }
+}
+
+.form-flex--vertical {
+    /* @apply --layout-vertical; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+}

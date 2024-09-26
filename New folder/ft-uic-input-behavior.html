@@ -1,0 +1,267 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-input/paper-input-behavior.html">
+
+
+<script>
+
+  window.cb = window.cb || {};
+
+  // Generate unique, monotonically increasing IDs for labels (needed by
+  // aria-labelledby) and add-ons.
+  Polymer.PaperInputHelper.NextPrefixID = 1;
+
+  /**
+   * Use `cb.UicInputBehavior` as an extension of `Polymer.PaperInputBehavior`
+   * (make sure it's applied latest).
+   * In addition to PaperInputBehavior, it adds support for:
+   * - multiple validators
+   * - (multiple) error messages
+   * - aria-labelledby relation for prefixes
+   *
+   * @polymerBehavior cb.UicInputBehavior
+   */
+  cb.UicInputBehaviorImpl = {
+
+    properties: {
+      /**
+       * The id used to connect the validator instance implementing IronValidatableBehavior
+       * (having a 'for' property) to the validatable. This is useful for validator instances
+       * containing unique configurations that need to be tied to a specific validatable instance
+       * (think of custom messages or other unique configurations).
+       * If you're using PaperInputBehavior to implement your own paper-input-like
+       * element, bind this to the `<input is="iron-input">`'s `validatable-id` property.
+       */
+      validatableId: {
+        type: String,
+        value: null
+      },
+
+      /**
+       * The id that needs to be applied to the prefix in the element
+       * implementing PaperInputBehavior
+       * @private
+       */
+      _prefixId: {
+        type: String
+      },
+
+      /**
+       * Giving this a default value will trigger the dom-if with !errorMessage.
+       */
+      errorMessage: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * Errors that are exposed by validatable element.
+       * The error with the highest priority in this list will be shown when validatable
+       * is in error state, and no error-message is supplied.
+       * @private
+       */
+      _errors: {
+        type: Array,
+        value: function () {
+          return [];
+        }
+      },
+
+      /**
+       * Additional instructions appearing beneath the input.
+       */
+      helpText: {
+        type: String,
+        value: null
+      },
+
+      /**
+       * Show the help text even when the input field does not have focus
+       */
+      helpTextPersistent: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * By default, the uic-input is pre-configured to validate automatically
+       * when 'value' changes.
+       * Note however, a validation message will be shown once 'touched' state
+       * of iron-input is true.
+       */
+      autoValidate: {
+        type: Boolean,
+        value: false
+      },
+
+      _highestPrioErrorMessage: {
+        type: 'String',
+        computed: '_getHighestPrioErrorMessage(_errors)'
+      },
+
+      /**
+       * Set to true to always validate instead of looking at the dirty touched
+       * state.
+       */
+      forceShowError: {
+        type: Boolean,
+        value: false
+      }
+
+    },
+
+    /**
+     * Returns a reference to the focusable element.
+     */
+    get _focusableElement() {
+      return this.inputElement.inputElement || this.inputElement;
+    },
+
+    // Overrides the _updateAriaLabelledBy of paper-input-behavior
+    _updateAriaLabelledBy: function () {
+      var labelledBy = '';
+
+      // Add label id
+      var label = Polymer.dom(this.root).querySelector('label');
+      if (label) {
+        if (label.id) {
+          labelledBy = label.id;
+        } else {
+          labelledBy = 'paper-input-label-' + Polymer.PaperInputHelper.NextLabelID;
+          label.id = labelledBy;
+          Polymer.PaperInputHelper.NextLabelID += 1;
+        }
+      }
+
+      // Add prefix id
+      var prefix = Polymer.dom(this.root).querySelector('[slot="prefix"]');
+
+      if (prefix) {
+        this._prefixId = 'paper-input-prefix-' + Polymer.PaperInputHelper.NextPrefixID;
+        labelledBy += ' ' + this._prefixId;
+        Polymer.PaperInputHelper.NextPrefixID += 1;
+      }
+
+      this._ariaLabelledBy = labelledBy;
+    },
+
+    /**
+     * Clears the inputElement. It will also erase validation and interaction states.
+     */
+    clear: function () {
+      if (this.inputElement.bindValue) {
+        this.inputElement.bindValue = null;
+      } else {
+        this.inputElement.value = null;
+      }
+
+      // reset validation state
+      this.inputElement.invalid = false;
+
+      // reset interaction state
+      this.interactionStateElement.resetInteractionState();
+    },
+
+    reset: function () {
+      // reset validation state
+      this.inputElement.invalid = false;
+      this.interactionStateElement.resetInteractionState();
+    },
+
+    /**
+     * Makes sure the validators are executed in the specified order.
+     *
+     * @param {Object} item The value to be validated.
+     * @return {boolean} True if `value` has the highest priority.
+     */
+    _showHighestPrioErrorMessage: function (item) {
+      return item.priority < 1;
+    },
+
+    _getHighestPrioErrorMessage: function (errors) {
+      if (errors.length) {
+        return errors[0].message;
+      }
+      return null;
+    },
+
+    /* a11y overrides. Methods below undo the generic behavior of PaperInputBehavior.
+    Just leave a11y to the platform, #usetheplatform */
+
+    attached: function () {
+      // a11y: remove tabindex (hostAttributes override apparently does not work).
+      // See inputBehavior for more info
+      if (this.hasAttribute('tabindex')) {
+        this.removeAttribute('tabindex');
+      }
+
+      // Redo the attached check of paper-input-behavior, without the Polymer 2 check.
+      // Since we don't use iron-input, no async issues occur with waiting for distributed content
+      if (this.inputElement && this._typesThatHaveText.indexOf(this.inputElement.type) !== -1) {
+        this.alwaysFloatLabel = true;
+      }
+
+      // Needed in shady dom to style the input element ft-uic-native-input exposes
+      //            this.scopeSubtree(this.inputElement, true);
+      // apparently, scopeSubtree() doesn't work for some browsers, polyfills etc
+      if (this.inputElement.inputElement) {
+        this.inputElement.inputElement.classList.add('style-scope');
+        this.inputElement.inputElement.classList.add(this.is);
+      }
+
+      // Set on-change listener to inputElement
+      this._onChange = this._onChange.bind(this);
+      this.inputElement.addEventListener('change', this._onChange);
+    },
+
+    detached: function () {
+      this.inputElement.removeEventListener('change', this._onChange);
+    },
+
+    /**
+     * Forward focus to inputElement. Overridden from PaperInputBehavior,
+     * who overrode from IronControlState on its turn
+     */
+    _focusBlurHandler: function (event) {
+      Polymer.IronControlState._focusBlurHandler.call(this, event); // retarget in p1 shady
+
+      // Forward the focus to the nested input, but not on blur, it caused 'tab traps'
+      if (event.type === 'focus' && this.focused && !this._shiftTabPressed && this._focusableElement) {
+        this._focusableElement.focus();
+      }
+    },
+
+    focus: function () {
+      // TODO: see if we somehow override something of the original focus function.
+      // If so, store a reference first and call it here
+      // Fire event and let _focusBlurHandler above do the focus delegation
+      this.dispatchEvent(new Event('focus', { bubbles: true }));
+    },
+
+    // Leave this to the platform
+    _onShiftTabDown: function () {
+    },
+
+    // Since removing tabindex breaks disabled toggle, override it from IronControlState
+    _disabledChanged: function (disabled) {
+      this.setAttribute('aria-disabled', disabled ? 'true' : 'false');
+      this.style.pointerEvents = disabled ? 'none' : '';
+      if (disabled) {
+        this._oldTabIndex = this.tabIndex;
+        this._setFocused(false);
+        this.tabIndex = -1;
+        this.blur();
+      } else if (this.hasAttribute('tabindex')) {
+        this.removeAttribute('tabindex');
+      }
+    }
+
+    /* end a11y overrides */
+
+  };
+
+  cb.UicInputBehavior = [
+    Polymer.PaperInputBehavior,
+    cb.UicInputBehaviorImpl
+  ];
+
+</script>

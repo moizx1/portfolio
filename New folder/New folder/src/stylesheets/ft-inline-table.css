@@ -1,0 +1,71 @@
+@import "color.css";
+@import "utils.css";
+
+.ft-inline-table {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  font-size: var(--font-size-xs);
+}
+
+.ft-inline-table-hover .ft-inline-table-row-entity:hover {
+  background-color: var(--ft-table-inline-hover-background) !important;
+  cursor: pointer;
+}
+
+.ft-inline-table--tc .ft-inline-table-cell {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.ft-inline-table-row {
+  display: table-row;
+}
+
+.ft-inline-table-row:nth-child(even) {
+  background-color: var(--ft-tablezebra-background);
+}
+
+.ft-inline-table-cell {
+  display: table-cell;
+  padding: 2px 0.5rem;
+  position: relative;
+}
+
+.ft-inline-table-row-header > .ft-inline-table-cell {
+  border-bottom: solid 1px var(--ft-app-border-color);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--ft-grey-400);
+}
+
+.ft-inline-table-row-rest,
+.ft-inline-table-row-footer {
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+  background: none !important;
+}
+
+.ft-inline-table-row-rest .ft-inline-table-cell:first-of-type::before,
+.ft-inline-table-row-footer .ft-inline-table-cell:first-of-type::before {
+  content: attr(data-label);
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px 0.5rem;
+}
+
+.ft-inline-table-row-entity > .ft-inline-table-cell {
+  border-bottom: solid 1px var(--ft-app-border-color);
+}
+
+.ft-inline-table-total {
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-xs);
+}

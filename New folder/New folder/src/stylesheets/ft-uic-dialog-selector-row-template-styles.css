@@ -1,0 +1,110 @@
+@import "iron-flex.css";
+@import "iron-flex-factors.css";
+@import "ft-pure-checkbox.css";
+
+:host {
+  display: block;
+}
+
+/* List Item */
+
+.virtual-list-item {
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-bottom: .250rem;
+  width: 100%;
+  padding: .375rem 1rem;
+  margin: 0;
+  border-bottom: solid 1px var(--ft-dialog-search-border-color);
+
+  overflow: hidden;
+
+  /* @apply --text-style; */
+  font-size: 0.75rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--ft-app-text-color);
+
+  -webkit-transition: background .4s;
+  -o-transition: background .4s;
+  transition: background .4s;
+
+  /* @apply --layout-horizontal; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  /* @apply --layout-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.virtual-list-item * {
+  pointer-events: none;
+}
+
+.virtual-list-item:hover {
+  color: var(--ft-dialog-search-result-text-hover);
+  background: var(--ft-focus-background);
+}
+
+.virtual-list-item:focus {
+  position: relative;
+  outline: none !important;
+  background: var(--ft-focus-background) !important;
+}
+
+.virtual-list-item:focus::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 61px;
+  background: var(--ft-icon-color);
+}
+
+.virtual-list-item .ft-pure-checkbox,
+.virtual-list-item .ft-custom-radio {
+  flex: 0 0 16px;
+}
+
+
+
+/* Radio */
+
+.virtual-list-item.selected-true .ft-custom-radio::before {
+  content: '';
+  border-radius: 50%;
+  background: var(--ft-icon-color);
+  width: 10px;
+  height: 10px;
+}
+
+.ft-custom-radio {
+  background: var(--ft-white-100);
+  box-shadow: rgba(0,0,0,.14) 0 -2px 1px;
+  border-radius: 50%;
+
+  width: 16px;
+  height: 16px;
+
+  display: none;
+}
+
+
+/* Custom checkmark/checkbox */
+
+.ft-custom-radio,
+.ft-pure-checkbox {
+  margin-right: 4px;
+}
+
+/* Helper */
+
+[hidden] {
+  display: none !important;
+}

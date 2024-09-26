@@ -1,0 +1,108 @@
+/* Text */
+
+.u-text--l {
+  text-align: left;
+}
+.u-text--r {
+  text-align: right;
+}
+.u-text--c {
+  text-align: center;
+}
+.u-text--j {
+  text-align: justify;
+}
+
+.u-text--uc {
+  text-transform: uppercase;
+}
+.u-text--lt {
+  text-decoration: line-through;
+}
+
+.u-text--tc {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.u-text--link {
+  color: inherit;
+}
+.u-text--link:hover {
+  opacity: 0.8;
+}
+
+.u-font-w--100 {
+  font-weight: 100;
+}
+.u-font-w--300 {
+  font-weight: 300;
+}
+.u-font-w--400 {
+  font-weight: 400;
+}
+.u-font-w--500 {
+  font-weight: 500;
+}
+.u-font-w--700 {
+  font-weight: 700;
+}
+
+.u-font-w--600 {
+  font-weight: 700;
+} /** WRONG */
+
+.u-font-size--xs {
+  font-size: 0.75rem !important;
+}
+.u-font-size--sm {
+  font-size: 0.875rem !important;
+}
+.u-font-size--md {
+  font-size: 1rem !important;
+}
+.u-font-size--lg {
+  font-size: 1.25rem !important;
+}
+
+/* Colors */
+
+.u-color--approved {
+  color: var(--ft-green-300);
+} /* to be removed */
+.u-color--primary {
+  color: var(--ft-status-primary);
+}
+.u-color--success {
+  color: var(--ft-status-success);
+}
+.u-color--warning {
+  color: var(--ft-status-warning);
+}
+.u-color--danger {
+  color: var(--ft-status-danger);
+}
+.u-color--pending {
+  color: var(--ft-status-pending);
+}
+.u-color--muted {
+  color: var(--ft-muted-color) !important;
+}
+.u-color--base {
+  color: var(--ft-app-text-color);
+}
+
+.u-color--pos {
+  color: var(--ft-green-300);
+}
+.u-color--neg {
+  color: var(--ft-red-300);
+}
+
+.cell-type-currency,
+.cell-type-amount,
+.cell-type-Amount {
+  font-weight: 500;
+}

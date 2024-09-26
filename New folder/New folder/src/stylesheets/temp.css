@@ -1,0 +1,129 @@
+
+
+:host {
+  position: relative;
+  outline: none;
+
+  /* layout vertical*/
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+label,
+::slotted(label) {
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  z-index: 1;
+  padding: 4px 0 2px 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  /* @apply --ft-uic-input-container-label; */
+  color: #a8a8a8;
+  font-size: .750rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.input-field-container,
+.input-slot-prefix,
+.input-slot-suffix {
+  position: relative;
+
+
+  /* @apply --layout-horizontal; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  /* @apply --layout-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.input-field {
+  position: relative;
+
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.error {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ft-uic-input-error-color, indianred);
+
+  /* @apply --ft-uic-input-error; */
+  font-size: var(--ft-app-font-size);
+  font-weight: 400;
+}
+
+
+.input-field-container {
+  font-size: var(--ft-uic-input-font-size, 0.75rem);
+  font-weight: var(--ft-uic-input-font-weight, 400);
+  color: var(--ft-uic-input-color, #111);
+  border-radius: var(--ft-uic-input-border-radius, 0.125rem);
+  background-color: var(--ft-uic-input-background, #fff);
+  box-shadow: var(--ft-uic-input-container-input-box-shadow);
+
+  @apply --ft-uic-input-field-container;
+}
+
+:host([focused]) .input-field-container {
+  box-shadow: var(--ft-uic-input-container-input-box-shadow-focus);
+
+  /* @apply --ft-uic-input-field-container-focused; */
+}
+
+.input-field-container ::slotted([slot="prefix"]),
+.input-slot-prefix {
+  border-top-left-radius: var(--ft-uic-input-border-radius, 0.125rem);
+  border-bottom-left-radius: var(--ft-uic-input-border-radius, 0.125rem);
+
+  /* @apply --ft-uic-input-prefix; */
+}
+
+.input-field-container ::slotted([slot="suffix"]),
+.input-slot-suffix {
+  border-top-right-radius: var(--ft-uic-input-border-radius, 0.125rem);
+  border-bottom-right-radius: var(--ft-uic-input-border-radius, 0.125rem);
+
+  /* @apply --ft-uic-input-suffix; */
+}
+
+.input-options {
+  position: absolute;
+  right: .125rem;
+  top: calc(50% - 11px);
+
+  /* @apply --layout-horizontal: ;
+  @apply --layout-justified: ;
+  @apply --layout-center: ; */
+
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -ms-flex-pack: var(--layout-justified_-_-ms-flex-pack);
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}

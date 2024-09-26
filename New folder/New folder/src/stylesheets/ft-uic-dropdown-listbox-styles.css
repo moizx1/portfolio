@@ -1,0 +1,274 @@
+@import "ft-button.css";
+
+:host {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0;
+  margin: 0;
+
+  @apply --ft-uic-dropdown-listbox;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:host,
+ft-uic-paper-menu-button,
+.dropdown-icon {
+  min-width: var(--ft-uic-dropdown-listbox-width, 34px);
+  height: var(--ft-uic-dropdown-listbox-height, 34px);
+  /* @apply --layout-inline; */
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+  /* @apply --layout-center-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+/* And yes for IE 11... */
+.dropdown-button {
+  height: var(--ft-uic-dropdown-listbox-height, 34px);
+}
+
+:host([disabled]) {
+  /* @apply --disabled; */
+  opacity: 0.6;
+  pointer-events: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+/** Reset some elements */
+
+ft-uic-listbox {
+  --ft-uic-listbox-background-color: none !important;
+}
+
+/* Default option */
+
+.default-option {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  transform: translateY(-50%);
+}
+
+/** Item styles */
+
+ft-uic-item:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+ft-uic-item.iron-selected,
+ft-uic-item.is-default-active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/** Btn styles */
+
+.ft-inline-btn {
+  font-family: inherit;
+  color: var(--ft-icon-color);
+  font-weight: 500;
+  background: none;
+  border: none;
+  text-transform: lowercase;
+}
+
+.ft-inline-btn::first-letter {
+  text-transform: capitalize;
+}
+
+.ft-inline-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.reset-selected-button-text {
+  font-weight: 900;
+}
+
+/* Paper overwrite */
+
+ft-uic-paper-menu-button {
+  padding: 0;
+  --paper-menu-button-dropdown-background: none !important;
+
+  /* --paper-menu-button-content: {
+    box-shadow: none !important;
+  } */
+  --paper-menu-button-content_-_box-shadow: none !important;
+
+  /*
+  --paper-menu-button-dropdown: {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 10px;
+    background-color: var(--ft-dropdown-listbox-background);
+    width: var(--ft-dropdown-listbox-width, 280px);
+  } */
+  --paper-menu-button-dropdown_-_box-shadow: rgba(0, 0, 0, 0.2) 0 4px 10px;
+  --paper-menu-button-dropdown_-_background-color: var(--ft-dropdown-listbox-background);
+  --paper-menu-button-dropdown_-_width: var(--ft-dropdown-listbox-width, 280px);
+}
+
+/** Dropdown label */
+
+.dropdown-button {
+  padding: 0 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+
+  color: var(--ft-dropdown-listbox-button-color);
+  border-radius: var(--ft-dropdown-listbox-button-border-radius);
+  box-shadow: var(--ft-dropdown-listbox-button-box-shadow);
+  background: var(--ft-dropdown-listbox-button-background);
+
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /* @apply --layout-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  /* @apply --layout-justified; */
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  @apply --ft-uic-filter-dropdown-button;
+}
+
+.dropdown-button span {
+  padding: 0 0.5rem 0 0.25rem;
+  box-sizing: border-box;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-button ft-uic-icon {
+  color: var(--ft-dropdown-listbox-button-icon-color);
+}
+
+:host([as-nav-element]) .dropdown-button {
+  color: var(--ft-app-text-color) !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+:host([as-nav-element]) .dropdown-button ft-uic-icon {
+  color: var(--ft-icon-color) !important;
+}
+
+:host([as-nav-element]) .dropdown-button {
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  -o-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:host([as-nav-element]) .dropdown-button:hover {
+  background: var(
+    --ft-uic-filter-background-hover,
+    rgba(0, 0, 0, 0.2)
+  ) !important;
+}
+
+/** Dropdown icon */
+
+.dropdown-icon {
+  cursor: pointer;
+  border-radius: var(--ft-uic-dropdown-listbox-border-radius, 0.125rem);
+
+  font-size: var(--ft-uic-dropdown-listbox-icon-font-size);
+  background-color: var(--ft-button-background, #222);
+  color: var(--ft-button-color, #fff);
+
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /* @apply --layout-center-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  @apply --ft-uic-dropdown-listbox-dropdown-icon;
+}
+
+:host([as-nav-element]) .dropdown-icon {
+  color: var(--ft-icon-color) !important;
+  background: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.dropdown-icon.has-active-filter-true {
+  background-color: var(--ft-button-background-active);
+  color: var(--ft-button-color-active);
+}
+
+/** Header and footer */
+
+.ft-uic-dropdown-listbox-header {
+  /* @apply --layout-horizontal; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
+
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+
+  color: var(--ft-dropdown-listbox-header-color, #ececec);
+  background-color: var(--ft-dropdown-listbox-background, #fff);
+  border-bottom: solid 1px var(--ft-dropdown-listbox-border-color, #ececec);
+}
+
+.ft-uic-dropdown-listbox-header > span {
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+
+  font-weight: bold;
+  font-size: 0.625rem;
+}
+
+.ft-uic-dropdown-listbox-header > span:nth-child(2) {
+  text-align: right;
+  color: var(--ft-dropdown-listbox-header-label-color);
+}
+
+.ft-uic-dropdown-listbox-footer {
+  padding: 0.25rem 0.5rem 0.5rem 0.5rem;
+}
+
+
+/*
+replaced with Svelte {#if} in template
+
+:host([hidden]),
+[hidden],
+.hidden-true {
+  display: none !important;
+}
+*/

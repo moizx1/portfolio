@@ -1,0 +1,335 @@
+:host {
+  --ft-col-1: {
+    -ms-flex-preferred-size: 8.33333333%;
+    flex-basis: 8.33333333%;
+    max-width: 8.33333333%;
+  }
+
+  --ft-col-2: {
+    -ms-flex-preferred-size: 16.66666667%;
+    flex-basis: 16.66666667%;
+    max-width: 16.66666667%;
+  }
+
+  --ft-col-3: {
+    -ms-flex-preferred-size: 25%;
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  --ft-col-4: {
+    -ms-flex-preferred-size: 33.33333333%;
+    flex-basis: 33.33333333%;
+    max-width: 33.33333333%;
+  }
+
+  --ft-col-5: {
+    -ms-flex-preferred-size: 41.66666667%;
+    flex-basis: 41.66666667%;
+    max-width: 41.66666667%;
+  }
+
+  --ft-col-6: {
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+
+  --ft-col-7: {
+    -ms-flex-preferred-size: 58.33333333%;
+    flex-basis: 58.33333333%;
+    max-width: 58.33333333%;
+  }
+
+  --ft-col-8: {
+    -ms-flex-preferred-size: 66.66666667%;
+    flex-basis: 66.66666667%;
+    max-width: 66.66666667%;
+  }
+
+  --ft-col-9: {
+    -ms-flex-preferred-size: 75%;
+    flex-basis: 75%;
+    max-width: 75%;
+  }
+
+  --ft-col-10: {
+    -ms-flex-preferred-size: 83.33333333%;
+    flex-basis: 83.33333333%;
+    max-width: 83.33333333%;
+  }
+
+  --ft-col-11: {
+    -ms-flex-preferred-size: 91.66666667%;
+    flex-basis: 91.66666667%;
+    max-width: 91.66666667%;
+  }
+
+  --ft-col-12: {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+
+  --ft-col-full: {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+
+.ft-layout {
+  padding: var(--ft-layout-padding, 1rem);
+  box-sizing: border-box;
+  display: flex;
+}
+
+.ft-layout[exact-view-height=""] {
+  height: var(--ft-layout-height, calc(100vh - 64px) ); /* Important */
+  @apply --ft-layout-exact-view-height;
+}
+
+/* Flex display */
+
+.ft-layout[inline=""],
+.ft-layout > div[inline=""] {
+  @apply --inline-flex;
+}
+
+.ft-layout[horizontal=""],
+.ft-layout > div[horizontal=""] {
+  /* @apply --layout-horizontal; */
+  display: flex;
+  flex-direction: row;
+}
+
+.ft-layout[horizontal-reverse=""],
+.ft-layout > div[horizontal-reverse=""] {
+  /* @apply --layout-horizontal-reverse; */
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.ft-layout[vertical=""],
+.ft-layout > div[vertical=""] {
+  /* @apply --layout-vertical; */
+  display: flex;
+  flex-direction: column;
+}
+
+.ft-layout[vertical-reverse=""],
+.ft-layout > div[vertical-reverse=""] {
+  /* @apply --layout-vertical-reverse; */
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.ft-layout[wrap],
+.ft-layout > div[wrap] {
+  /* @apply --layout-wrap; */
+  flex-wrap: wrap;
+}
+
+.ft-layout[wrap-reverse],
+.ft-layout > div[wrap-reverse] {
+  /* @apply --layout-wrap-reverse; */
+  flex-wrap: wrap-reverse;
+}
+
+
+/* Main axis */
+
+.ft-layout[start=""],
+.ft-layout > div[start=""] {
+  /* @apply --layout-start; */
+  align-items: flex-start;
+}
+
+.ft-layout[center=""],
+.ft-layout > div[center=""] {
+  /* @apply --layout-center; */
+  align-items: center;
+}
+
+.ft-layout[end=""],
+.ft-layout > div[end=""] {
+  /* @apply --layout-end; */
+  align-items: flex-end;
+}
+
+.ft-layout[baseline=""],
+.ft-layout > div[baseline=""] {
+  /* @apply --layout-baseline; */
+  align-items: baseline;
+}
+
+
+/* Alignment in main axis */
+
+.ft-layout[start-justified=""],
+.ft-layout > div[start-justified=""] {
+  /* @apply --layout-start-justified; */
+  justify-content: flex-start;
+}
+
+.ft-layout[center-justified=""],
+.ft-layout > div[center-justified=""] {
+  /* @apply --layout-center-justified; */
+  justify-content: center;
+}
+
+.ft-layout[end-justified=""],
+.ft-layout > div[end-justified=""] {
+  /* @apply --layout-end-justified; */
+  justify-content: flex-end;
+}
+
+.ft-layout[around-justified=""],
+.ft-layout > div[around-justified=""] {
+  /* @apply --layout-around-justified; */
+  justify-content: space-around;
+}
+
+.ft-layout[justified=""],
+.ft-layout > div[justified=""] {
+  /* @apply --layout-justified; */
+  justify-content: space-between;
+}
+
+.ft-layout[center-center=""],
+.ft-layout > div[center-center=""] {
+  /* @apply --layout-center-center; */
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Self Alignment */
+
+.ft-layout[self-start=""],
+.ft-layout > div[self-start=""] {
+  @apply --layout-self-start;
+}
+
+.ft-layout[self-center=""],
+.ft-layout > div[self-center=""] {
+  /* @apply --layout-self-center; */
+  align-self: flex-start;
+}
+
+.ft-layout[self-stretch=""],
+.ft-layout > div[self-stretch=""] {
+  /* @apply --layout-self-stretch; */
+  align-self: stretch;
+}
+
+.ft-layout[self-baseline=""],
+.ft-layout > div[self-baseline=""] {
+  /* @apply --layout-self-baseline; */
+  align-self: baseline;
+}
+
+.ft-layout[self-start=""],
+.ft-layout > div[self-start=""] {
+  /* @apply --layout-self-start; */
+  align-self: flex-start;
+}
+
+
+/* multi-line alignment in main axis */
+
+.ft-layout[start-aligned=""],
+.ft-layout > div[start-aligned=""] {
+  /* @apply --layout-start-aligned; */
+  align-content: flex-start;
+}
+.ft-layout[end-aligned=""],
+.ft-layout > div[end-aligned=""] {
+  /* @apply --layout-end-aligned; */
+  align-content: flex-end;
+}
+.ft-layout[center-aligned=""],
+.ft-layout > div[center-aligned=""] {
+  /* @apply --layout-center-aligned; */
+  align-content: center;
+}
+.ft-layout[between-aligned=""],
+.ft-layout > div[between-aligned=""] {
+  /* @apply --layout-between-aligned; */
+  align-content: space-between;
+}
+.ft-layout[around-aligned=""],
+.ft-layout > div[around-aligned=""] {
+  /* @apply --layout-around-aligned; */
+  align-content: space-around;
+}
+
+
+/* Flex */
+
+.ft-layout[flex-auto=""], .ft-layout > div[flex-auto] { 
+  /* @apply --layout-flex-auto;  */
+  flex: 1 1 auto;
+}
+.ft-layout[flex-none=""], .ft-layout > div[flex-none=""] { 
+  /* @apply --layout-flex-none; */
+  flex: none;
+ }
+.ft-layout[flex=""], .ft-layout > div[flex=""] { 
+  /* @apply --layout-flex;  */
+  flex: 1;
+  flex-basis: 0.000000001px;
+}
+
+.ft-layout[flex-2=""], .ft-layout > div[flex-2=""] { 
+  /* @apply --layout-flex-2;  */
+  flex:2;
+}
+.ft-layout[flex-3=""], .ft-layout > div[flex-3=""] { 
+  /* @apply --layout-flex-3;  */
+  flex:3;
+}
+.ft-layout[flex-4=""], .ft-layout > div[flex-4=""] { 
+  /* @apply --layout-flex-4;  */
+  flex: 4;
+}
+.ft-layout[flex-5=""], .ft-layout > div[flex-5=""] { 
+  /* @apply --layout-flex-5; */
+  flex: 5;
+}
+.ft-layout[flex-6=""], .ft-layout > div[flex-6=""] { 
+  /* @apply --layout-flex-6; */
+  flex: 6;
+}
+.ft-layout[flex-7=""], .ft-layout > div[flex-7=""] {   
+  /* @apply --layout-flex-7; */
+  flex:7; 
+}
+.ft-layout[flex-8=""], .ft-layout > div[flex-8=""] { 
+  /* @apply --layout-flex-8; */
+  flex:8; 
+}
+.ft-layout[flex-9=""], .ft-layout > div[flex-9=""] { 
+  /* @apply --layout-flex-9; */
+  flex:9; 
+}
+.ft-layout[flex-10=""], .ft-layout > div[flex-10=""] { 
+  /* @apply --layout-flex-10; */
+  flex:10;
+ }
+.ft-layout[flex-11=""], .ft-layout > div[flex-11=""] { 
+  /* @apply --layout-flex-11; */
+  flex:11; 
+}
+.ft-layout[flex-12=""], .ft-layout > div[flex-12=""] { 
+  /* @apply --layout-flex-12; */
+  flex:12; 
+}
+
+
+/* Misc  */
+
+.ft-layout[vertical-scroll] {
+  overflow-x: hidden;
+  overflow-y: auto;
+}

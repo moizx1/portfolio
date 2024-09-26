@@ -1,0 +1,106 @@
+/* Checkbox */
+
+.ft-pure-checkbox {
+  cursor: pointer;
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  background-color: var(
+    --ft-pure-checkbox-check-background,
+    var(--ft-grey-100)
+  );
+  box-sizing: border-box;
+  box-shadow: rgba(0, 0, 0, 0.14) 1px 1px 0 inset;
+  vertical-align: middle;
+
+  /* @apply --layout-inline; */
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+
+  /* @apply --layout-center-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+  @apply --ft-pure-checkbox;
+}
+
+.ft-pure-checkbox--check {
+  pointer-events: none;
+  display: none;
+  width: 12px;
+  height: 12px;
+}
+
+.ft-pure-checkbox--check::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 8px;
+
+  border-right: solid 2px
+    var(--ft-pure-checkbox-check-color, var(--ft-app-background));
+  border-bottom: solid 2px
+    var(--ft-pure-checkbox-check-color, var(--ft-app-background));
+
+  -webkit-transform: translate(3px, -1px) rotate(45deg);
+  -ms-transform: translate(3px, 0px) rotate(45deg);
+  transform: translate(3px, -1px) rotate(45deg);
+}
+
+.ft-pure-checkbox--partial {
+  pointer-events: none;
+  content: "";
+  display: none;
+  background-color: var(--ft-pure-checkbox-check-color);
+  width: 8px;
+  height: 2px;
+}
+
+/* IE and Edge */
+@supports (-ms-ime-align: auto) {
+  .ft-pure-checkbox--check::after {
+    width: 5px;
+    height: 10px;
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ft-pure-checkbox--check::after {
+    width: 5px;
+    height: 10px;
+  }
+}
+
+/* Check Status */
+/* TODO: reduce the complex selectors for all components */
+
+.iron-selected .ft-pure-checkbox,
+.partial-selection .ft-pure-checkbox,
+.partial-selection.ft-pure-checkbox,
+.full-selection .ft-pure-checkbox,
+.full-selection.ft-pure-checkbox,
+.is-selected .ft-pure-checkbox,
+.selected-true .ft-pure-checkbox,
+.selected-true.ft-pure-checkbox {
+  background-color: var(
+    --ft-pure-checkbox-check-active-background,
+    var(--primary)
+  );
+  box-shadow: none;
+}
+
+.iron-selected .ft-pure-checkbox > .ft-pure-checkbox--check,
+.partial-selection .ft-pure-checkbox > .ft-pure-checkbox--partial,
+.partial-selection.ft-pure-checkbox > .ft-pure-checkbox--partial,
+.full-selection .ft-pure-checkbox > .ft-pure-checkbox--check,
+.full-selection.ft-pure-checkbox > .ft-pure-checkbox--check,
+.is-selected .ft-pure-checkbox > .ft-pure-checkbox--check,
+.selected-true .ft-pure-checkbox > .ft-pure-checkbox--check,
+.selected-true.ft-pure-checkbox > .ft-pure-checkbox--check {
+  display: inline-block;
+}

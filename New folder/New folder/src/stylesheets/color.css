@@ -1,0 +1,96 @@
+html {
+  --ft-grey-900: #212121;
+  --ft-grey-800: #333;
+  --ft-grey-700: #404040;
+  --ft-grey-600: #4d4d4d;
+  --ft-grey-500: #767676;
+  --ft-grey-400: #8f8f8f;
+  --ft-grey-300: #a8a8a8;
+  --ft-grey-250: #d9d9d9;
+  --ft-grey-200: #e5e5e5;
+  --ft-grey-100: #f2f2f2;
+  --ft-grey-50: #fafafa;
+
+  --ft-orange-100: #edc0a4;
+  --ft-orange-300: #ff6200;
+  --ft-orange-500: #da5500;
+  --ft-orange-900: #b34500;
+
+  --ft-red-100: #f1aabc;
+  --ft-red-300: #ff3366;
+  --ft-red-500: #f90044;
+  --ft-red-900: #af0129;
+
+  --ft-green-100: #abf4d1;
+  --ft-green-300: #4ee29b;
+  --ft-green-500: #2cb875;
+  --ft-green-900: #118859;
+
+  --ft-yellow-100: #f8e1a9;
+  --ft-yellow-300: #ffcb4e;
+  --ft-yellow-500: #fbc02d;
+  --ft-yellow-900: #f57f17;
+
+  --ft-blue-100: #d9f0fa;
+  --ft-blue-300: #0297db;
+  --ft-blue-500: #1477af;
+  --ft-blue-900: #004c77;
+
+  --ft-black-100: #000;
+  --ft-white-100: #fff;
+
+  --ft-warning-hc-color: #9c5700;
+  --ft-warning-hc-background: #ffeb9c;
+  --ft-danger-hc-color: #9c0006;
+  --ft-danger-hc-background: #ffc7ce;
+  --ft-approved-hc-color: #006100;
+  --ft-approved-hc-background: #c6efce;
+
+  --ft-prefilled-textfield: #f9ffbc;
+
+  /* Slate */
+
+  --ft-night-blue-100: #ebf8f7;
+  --ft-night-blue-200: #d9f0f1;
+  --ft-night-blue-300: #b5d2d5;
+  --ft-night-blue-400: #8ca6ac;
+  --ft-night-blue-500: #586e75;
+  --ft-night-blue-600: #405964;
+  --ft-night-blue-700: #2c4454;
+  --ft-night-blue-800: #1c3143;
+  --ft-night-blue-900: #102338;
+
+  /* Hight Contrast */
+
+  --ft-high-contrast-100: #ebf8f7;
+  --ft-high-contrast-200: #ebf8f7;
+  --ft-high-contrast-300: #ebf8f7;
+  --ft-high-contrast-400: #000;
+  --ft-high-contrast-500: #000;
+  --ft-high-contrast-600: #000;
+  --ft-high-contrast-700: #000;
+  --ft-high-contrast-800: #000;
+  --ft-high-contrast-900: #000;
+
+  /* --ft-high-contrast-yellow-100: #f8e1a9; */
+
+  --ft-high-contrast-primary: #fff112;
+  --ft-high-contrast-disabled: #3ff23f;
+
+  /* Chart colors (mainly used for piecharts) */
+
+  --ft-chart-color-0: #4dd0e1;
+  --ft-chart-color-1: #c56948;
+  --ft-chart-color-2: #58d95a;
+  --ft-chart-color-3: #ff6f00;
+  --ft-chart-color-4: #f06292;
+  --ft-chart-color-5: #90a4ae;
+  --ft-chart-color-6: #ba68c8;
+  --ft-chart-color-7: #e57373;
+  --ft-chart-color-8: #795548;
+  --ft-chart-color-9: #9575cd;
+  --ft-chart-color-10: #7986cb;
+  --ft-chart-color-11: #64b5f6;
+  --ft-chart-color-12: #ffb74d;
+  --ft-chart-color-13: #039be5;
+}

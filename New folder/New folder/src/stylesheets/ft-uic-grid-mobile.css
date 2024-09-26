@@ -1,0 +1,472 @@
+:host {
+  font-size: 13px;
+  --ellipsis: {
+    white-space: nowrap;
+    overflow-y: visible;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+
+/* Main list item
+----------------------------------------------------------------------- */
+
+.list-item {
+  border-bottom: solid 1px var(--ft-app-border-color, #ddd);
+  width: 100%;
+  height: var(--row-height);
+}
+
+.has-active-context,
+.list-item.is-selected {
+  background-color: rgba(0,0,0,.07);
+}
+
+.no-events {
+  pointer-events: none;
+}
+
+.grid-list-empty {
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  /* @apply --layout-center-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+
+}
+
+
+/*
+Fields on mobile list item grid:
+--------------------------------------------------------------------------
+- cell-checkbox
+- cell-image
+- cell-icon
+- cell-context-menu
+- cell-content (used for offset styling)
+  -- cell-fields
+  -- cell-pills
+*/
+
+.cell-content {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: calc(100% - 8px);
+  height: calc(100% - 16px);
+    /* @apply --layout; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+/* Width and offset are depended on what is active
+*  (Selection, Context menu or both)
+*  Note, apply same styling to mobile header!
+----------------------------------------------------------------------- */
+
+.grid-mobile-container.has-selection .cell-content,
+.grid-mobile-container.has-context-menu .cell-content {
+  width: calc(100% - 50px);
+}
+
+.grid-mobile-container.has-selection .cell-content {
+  left: 46px;
+}
+
+.grid-mobile-container.has-selection.has-context-menu .cell-content {
+  width: calc(100% - 96px) !important;
+}
+
+
+/* Radion and Checkbox location
+----------------------------------------------------------------------- */
+
+.cell-input {
+  position: absolute;
+  top: 10px;
+  left: 6px;
+}
+
+/* Image
+----------------------------------------------------------------------- */
+
+.cell-image {
+  justify-self: center;
+  vertical-align: middle;
+  border-radius: 4px;
+  margin: 4px 8px;
+
+  width: var(--ft-uic-grid-cell-image-multiline-size, 28px);
+  height: var(--ft-uic-grid-cell-image-multiline-size, 28px);
+  flex: 0 0 var(--ft-uic-grid-cell-image-multiline-size, 28px);
+
+ /* @apply --layout; */
+ display: -ms-flexbox;
+ display: -webkit-flex;
+ display: flex;
+
+ /* @apply --layout-center-center; */
+ -ms-flex-align: center;
+ -webkit-align-items: center;
+ align-items: center;
+ -ms-flex-pack: center;
+ -webkit-justify-content: center;
+ justify-content: center;
+}
+
+.cell-image--icon {
+  font-size: var(--ft-uic-grid-cell-icon-font-size, 16px);
+}
+
+/* Icon
+----------------------------------------------------------------------- */
+
+.cell-status-icon {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  color: var(--ft-muted-color);
+}
+
+/* Fields / labels
+----------------------------------------------------------------------- */
+
+.cell-fields {
+  position: relative;
+  width: 100%;
+}
+
+.cell-fields > span {
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-y: visible;
+  overflow-x: hidden;
+  font-size: .750rem;
+  /* color: var(--ft-grey-600); */
+  opacity: .8;
+}
+
+@media (min-width: 411px) {
+  .cell-fields > span {
+    font-size: .875rem;
+  }
+}
+
+/* Pills
+----------------------------------------------------------------------- */
+
+.cell-pills {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  height: 24px;
+  width: 100%;
+  overflow: auto;
+
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+}
+
+.cell-pills > span {
+  margin-right: 4px;
+}
+
+.cell-pills > span:nth-child(1) {
+  margin-left: 4px;
+}
+
+
+/* Context menu
+----------------------------------------------------------------------- */
+
+.cell-menu-btn {
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 17px);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+  color: var(--ft-icon-color);
+  background-color: var(--ft-cell-button-background);
+  z-index: 5;
+  font-size: 18px;
+
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  /* @apply --layout-center-center; */
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+
+/* Selection bar */
+
+.selection-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+
+  width: 100%;
+  height: var(--ft-uic-grid-fixed-footer-height, 42px);
+
+  background-color: var(--ft-app-background);
+}
+
+/* Wide labels */
+
+.key-slot-c0-0 {
+  top: 0;
+  left: 0;
+  width: 70%;
+}
+
+.key-slot-c0-1 {
+  top: 18px;
+  left: 0;
+  width: 70%;
+}
+
+.key-slot-c0-2 {
+  top: 42px;
+  left: 0;
+  width: 70%;
+}
+
+.key-slot-c0-3 {
+  top: 64px;
+  left: 0;
+  width: 70%;
+}
+
+.key-slot-c0-1 + .key-slot-c0-2 {
+  border-top: dashed 1px var(--ft-grey-400);
+  padding-top: 4px;
+}
+
+/* Slim labels */
+
+.key-slot-c1-0 {
+  top: 0;
+  right: 0;
+  width: 30%;
+}
+
+.key-slot-c1-2 {
+  top: 18px;
+  right: 0;
+  width: 30%;
+}
+
+/* Generic */
+
+.key-slot-c0-0,
+.key-slot-c0-2,
+.key-slot-c1-0 {
+  font-weight: 700;
+
+  opacity: 1;
+}
+
+.key-slot-c0-0,
+.key-slot-c0-2 {
+  color: var(--ft-app-text-color) !important;
+}
+
+.key-slot-c1-0,
+.key-slot-c1-1,
+.key-slot-c1-2,
+.key-slot-c1-3 {
+  text-align: right;
+}
+
+
+/* Checkbox styling */
+/* Source: https://css-tricks.com/custom-styling-form-inputs-with-modern-css-features/ */
+
+@supports (-webkit-appearance: none) or (-moz-appearance: none) {
+  input[type='checkbox'] {
+    --active: var(--ft-uic-grid-mobile-checkbox-color);
+    --active-inner: var(--ft-uic-grid-mobile-checkbox-color-checked);
+
+    --border: var(--ft-uic-grid-mobile-checkbox-border);
+    --background: var(--ft-uic-grid-mobile-checkbox-background);
+    --disabled: var(--ft-muted-color);
+    --disabled-inner: var(--ft-muted-color);
+
+    overflow-y: visible;
+    overflow-x: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 50%;
+    height: 28px;
+    width: 28px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--b, var(--background));
+  }
+
+  input[type='checkbox']:after {
+    content: '';
+    opacity: var(--o, 0);
+    display: block;
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border: 2px solid var(--active-inner);
+    border-top: 0;
+    border-left: 0;
+    left: 9px;
+    top: 4px;
+    -webkit-transform: rotate(var(--r, 20deg));
+            transform: rotate(var(--r, 20deg));
+  }
+
+  .list-item.is-selected input[type='checkbox'],
+  input[type='checkbox']:checked {
+    --b: var(--active);
+    --border: var(--active);
+    --d-o: .3s;
+    --d-t: .6s;
+    --d-t-e: cubic-bezier(.2, .85, .32, 1.2);
+    --o: 1;
+    --r: 43deg;
+  }
+
+  input[type='checkbox']:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: .6;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
+  input[type='checkbox']:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+  }
+
+
+
+
+
+  input[type='radio'] {
+    --active: var(--ft-uic-grid-mobile-checkbox-color);
+    --active-inner: var(--ft-uic-grid-mobile-checkbox-color-checked);
+
+    --border: var(--ft-uic-grid-mobile-checkbox-border);
+    --background: var(--ft-uic-grid-mobile-checkbox-background);
+    --disabled: var(--ft-muted-color);
+    --disabled-inner: var(--ft-muted-color);
+
+    overflow-y: visible;
+    overflow-x: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border-radius: 50%;
+    height: 24px;
+    width: 24px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--b, var(--background));
+
+    /* @apply --layout; */
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    /* @apply --layout-center-center; */
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+
+  input[type='radio']:after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    opacity: var(--opacity, 0);
+    background: var(--active);
+  }
+
+  .list-item.is-selected input[type='radio']:after,
+  input[type='radio']:checked {
+    --opacity: 1;
+  }
+
+  input[type='radio']:disabled {
+    --b: var(--disabled);
+    cursor: not-allowed;
+    opacity: .6;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+  }
+
+  input[type='radio']:disabled:checked {
+    --b: var(--disabled-inner);
+    --bc: var(--border);
+  }
+}
+
+
+/* Message + icon */
+
+.message {
+  max-width: 220px;
+  text-align: center;
+}
+
+.message-icon,
+.message-icon::before {
+  font-size: 98px;
+  opacity: .6;
+  color: var(--ft-grey-300);
+}
+
+/* Helpers */
+
+[hidden] { display: none !important; }

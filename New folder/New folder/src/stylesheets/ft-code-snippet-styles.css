@@ -1,0 +1,15 @@
+.string {
+  color: var(--ft-blue-300);
+  }
+.number {
+  color: var(--ft-orange-300);
+  }
+.boolean {
+  color: var(--ft-blue-300);
+  }
+.null {
+  color: var(--ft-yellow-900);
+  }
+.key {
+  color: var(--ft-red-300);
+  }

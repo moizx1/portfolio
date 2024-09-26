@@ -1,0 +1,125 @@
+.widget-container {
+  position: relative;
+
+  margin-left: -8px;
+  width: calc(100% + 16px);
+
+  /* @apply --layout-horizontal; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  /* @apply --layout-wrap; */
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.widget-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
+
+  height: var(--ft-uic-widget-item-height, 365px);
+  margin-bottom: var(--ft-uic-widget-item-margin-bottom, 1rem);
+  max-width: 100%;
+
+  opacity: 1;
+
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.hide {
+  opacity: 0;
+  -webkit-transition: opacity .4s;
+  transition: opacity .4s;
+}
+
+.widget-item .widget {
+  width: var(--ft-uic-widget-width, calc(100% - 16px));
+}
+
+@media(min-width: 993px) {
+  .max-cols-1 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    width: 100%;
+  }
+  .max-cols-2 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    width: 100%;
+  }
+  .max-cols-3 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    width: 50%;
+  }
+}
+
+@media(min-width: 1510px) {
+  .max-cols-1 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 100%;
+    flex: 0 1 100%;
+    width: 100%;
+  }
+  .max-cols-2 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    width: 50%;
+  }
+  .max-cols-3 .widget-item {
+    -webkit-box-flex: 1;
+    -ms-flex: 0 1 33.333336%;
+    flex: 0 1 33.333336%;
+    width: 33.333336%;
+  }
+}
+
+/* Helpers */
+.ico-link {
+  color: var(--ft-icon-color);
+}
+
+.is-no-link .ico-link {
+  display: none;
+}
+
+.is-link {
+  cursor: pointer;
+}
+
+.is-link:hover {
+  opacity: .8;
+}
+
+[hidden] { display: none !important; }
+
+ft-uic-widget-content-container, ft-uic-panel-content-container {
+  position: relative;
+  /** this makes the content flex 100% in height */
+
+  /* @apply --layout-flex; */
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}

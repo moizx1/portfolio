@@ -1,0 +1,420 @@
+@import "utils.css";
+@import "color.css";
+
+/* Collection of pure css icon solutions */
+.infinite,
+.infinite-muted,
+.checkmark,
+.checkmark-muted,
+.reject,
+.reject-muted {
+    display: inline-block;
+    /* width: .875rem; */
+    /* height: .875rem; */
+    width: .750rem;
+    height: .750rem;
+    position: relative;
+}
+
+.change-added,
+.change-removed,
+.change-modified {
+    display: inline-block;
+    width: .625rem;
+    height: .625rem;
+    position: relative;
+}
+
+
+
+.infinite,
+.infinite-muted {
+    display: inline-block;
+    width: 20px !important;
+    overflow: visible !important;
+}
+
+.infinite,
+.infinite::before,
+.infinite::after {
+    color: var(--ft-status-success);
+}
+
+.infinite-muted {
+    color: var(--ft-muted-color);
+}
+
+.infinite::after,
+.infinite-muted::after {
+    content: "\e923";
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    padding: 0;
+    margin: 0 .500rem 0 0;
+    vertical-align: middle;
+    line-height: 16px;
+    min-width: 16px;
+    max-width: 16px;
+}
+
+/* Custom ico icon definitions  */
+
+/* .grid-cell.is-invalid::after,
+.infinite::after,
+.infinite-muted::after {
+  font-family: 'fonts' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  line-height: 16px;
+  min-width: 16px;
+  max-width: 16px;
+  color: var(--ft-red-300);
+} */
+
+/* Checkmark */
+
+.checkmark::after,
+.checkmark-muted::after {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 10px;
+
+    position: absolute;
+    top: calc(50% - 2px);
+    left: 50%;
+
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.checkmark::after {
+    border-right: solid 2px var(--ft-status-success);
+    border-bottom: solid 2px var(--ft-status-success);
+}
+
+.checkmark-muted::after {
+    border-right: solid 2px var(--ft-muted-color);
+    border-bottom: solid 2px var(--ft-muted-color);
+}
+
+.reject::before,
+.reject::after,
+.reject-muted::before,
+.reject-muted::after {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.reject::before,
+.reject::after {
+    background: var(--ft-status-danger);
+}
+
+.reject-muted::before,
+.reject-muted::after {
+    background: var(--ft-muted-color);
+}
+
+.reject::before,
+.reject-muted::before {
+    -webkit-transform: translate(-50%, -50%) rotate(45deg);
+    -ms-transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.reject::after,
+.reject-muted::after {
+    -webkit-transform: translate(-50%, -50%) rotate(-45deg);
+    -ms-transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.change-removed::before,
+.change-added::before,
+.change-modified::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.change-removed::before {
+    border-width: 10px 5px 0 5px;
+    border-color: var(--ft-red-300) transparent transparent transparent;
+}
+
+.change-added::before {
+    border-style: solid;
+    border-width: 0 5px 10px 5px;
+    border-color: transparent transparent var(--ft-green-300) transparent;
+}
+
+.change-modified::before {
+    border-style: solid;
+    border-width: 5px 10px 5px 0;
+    border-color: transparent var(--ft-yellow-300) transparent transparent;
+}
+
+.ft-inline-icon-button {
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+}
+
+.ft-small-avatar {
+    background-color: var(--ft-blue-300);
+    color: var(--ft-white-100);
+    padding: .375rem;
+    border-radius: 50%;
+    width: 1.500rem;
+    height: 1.500rem;
+    box-sizing: border-box;
+    @apply --layout;
+}
+
+/* Row icons */
+
+.ft-row-icon {
+    margin: 0 .500rem 0 0;
+}
+
+.row-icon-payments {
+    color: var(--ft-icon-payments) !important;
+}
+
+.row-icon-bank {
+    color: var(--ft-icon-bank) !important;
+}
+
+.row-icon-country {
+    color: var(--ft-icon-country) !important;
+}
+
+.row-icon-legal-entity {
+    color: var(--ft-icon-legal-entity) !important;
+}
+
+.row-icon-credit-transfer {
+    color: var(--ft-icon-credit-transfer) !important;
+}
+
+.row-icon-account-type {
+    color: var(--ft-icon-account-type) !important;
+}
+
+.row-icon-bic,
+.row-icon-bic11 {
+    color: var(--ft-icon-bic11) !important;
+}
+
+.row-icon-user {
+    color: var(--ft-icon-user) !important;
+}
+
+.row-icon-user-groups {
+    color: var(--ft-icon-user-groups) !important;
+}
+
+.row-icon-school {
+    color: var(--ft-icon-school) !important;
+}
+
+.row-icon-spa {
+    color: var(--ft-icon-spa) !important;
+}
+
+.row-icon-brightness-low {
+    color: var(--ft-icon-brightness-low) !important;
+}
+
+.row-icon-address-book {
+    color: var(--ft-icon-color) !important;
+}
+
+/* TODO: Remove below in favour of above def. */
+
+.has-grid-icon-true.ico-payments::before,
+.grid-icon.ico-payments,
+.ft-grid-icon-ft.ico-payments,
+.ft-row-icon.icon-payments {
+    color: var(--ft-icon-payments);
+}
+
+.has-grid-icon-true.ico-bank::before,
+.grid-icon.ico-bank,
+.ft-grid-icon-ft.ico-bank,
+.ft-row-icon.icon-bank {
+    color: var(--ft-icon-bank);
+}
+
+.has-grid-icon-true.ico-country::before,
+.grid-icon.ico-country,
+.ft-grid-icon-ft.ico-country,
+.ft-row-icon.icon-country {
+    color: var(--ft-icon-country);
+}
+
+.has-grid-icon-true.ico-legal-entity::before,
+.grid-icon.ico-legal-entity,
+.ft-grid-icon-ft.ico-legal-entity,
+.ft-row-icon.icon-legal-entity {
+    color: var(--ft-icon-legal-entity);
+}
+
+.has-grid-icon-true.ico-credit-transfer::before,
+.grid-icon.ico-credit-transfer,
+.ft-grid-icon-ft.ico-credit-transfer,
+.ft-row-icon.icon-credit-transfer {
+    color: var(--ft-icon-credit-transfer);
+}
+
+.has-grid-icon-true.ico-account-type::before,
+.grid-icon.ico-account-type,
+.ft-grid-icon-ft.ico-account-type,
+.ft-row-icon.icon-account-type {
+    color: var(--ft-icon-account-type);
+}
+
+.has-grid-icon-true.ico-bic11::before,
+.grid-icon.ico-bic11,
+.ft-grid-icon-ft.ico-bic11,
+.ft-row-icon.icon-bic11 {
+    color: var(--ft-icon-bic11);
+}
+
+.has-grid-icon-true.ico-user::before,
+.grid-icon.ico-user,
+.ft-grid-icon-ft.ico-user,
+.ft-row-icon.icon-user {
+    color: var(--ft-icon-user);
+}
+
+.has-grid-icon-true.ico-user-groups::before,
+.grid-icon.ico-user-groups,
+.ft-grid-icon-ft.ico-user-groups,
+.ft-row-icon.icon-user-groups {
+    color: var(--ft-icon-user-groups);
+}
+
+.has-grid-icon-true.ico-school::before,
+.grid-icon.ico-school,
+.ft-grid-icon-ft.ico-school,
+.ft-row-icon.icon-school {
+    color: var(--ft-icon-school);
+}
+
+.has-grid-icon-true.ico-spa::before,
+.grid-icon.ico-spa,
+.ft-grid-icon-ft.ico-spa,
+.ft-row-icon.icon-spa {
+    color: var(--ft-icon-spa);
+}
+
+.has-grid-icon-true.ico-brightness-low::before,
+.grid-icon.ico-brightness-low,
+.ft-grid-icon-ft.ico-brightness-low,
+.ft-row-icon.icon-brightness-low {
+    color: var(--ft-icon-brightness-low);
+}
+
+/* Improveved names, should be replaces iwth above */
+
+.ft-icon-payments {
+    color: var(--ft-icon-payments);
+}
+
+.ft-icon-bank {
+    color: var(--ft-icon-bank);
+}
+
+.ft-icon-country {
+    color: var(--ft-icon-country);
+}
+
+.ft-icon-legal-entity {
+    color: var(--ft-icon-legal-entity);
+}
+
+.ft-icon-credit-transfer {
+    color: var(--ft-icon-credit-transfer);
+}
+
+.ft-icon-account-type {
+    color: var(--ft-icon-account-type);
+}
+
+.ft-icon-bic11 {
+    color: var(--ft-icon-bic11);
+}
+
+.ft-icon-user {
+    color: var(--ft-icon-user);
+}
+
+.ft-icon-user-groups {
+    color: var(--ft-icon-user-groups);
+}
+
+.ft-icon-school {
+    color: var(--ft-icon-school);
+}
+
+.ft-icon-spa {
+    color: var(--ft-icon-spa);
+}
+
+.ft-icon-brightness-low {
+    color: var(--ft-icon-brightness-low);
+}
+
+/* UI icon */
+
+.ft-ico-action-icon {
+    color: var(--ft-icon-color);
+    font-size: var(--font-size-md);
+    border: none;
+    background: none;
+    outline: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.ft-ico-action-icon:hover {
+    opacity: .8;
+}
+
+.ft-ico-tabs-action-icons {
+    @apply --layout;
+}
+
+.ft-ico-tabs-action-icons>.ft-ico-action-icon {
+    border-left: solid 1px var(--ft-app-background);
+    width: 42px;
+    height: 42px;
+}

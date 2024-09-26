@@ -1,0 +1,94 @@
+.ft-dialog {
+  width: 100% !important;
+  padding: 1rem 0 0 0;
+  box-sizing: border-box;
+  color: var(--ft-app-text-color);
+  border-radius: 0.25rem;
+  border: var(--ft-input-border);
+  background-color: var(--ft-dialog-background);
+  /* @apply --ft-dialog; */
+  box-shadow: none;
+}
+
+/* If used inline */
+.ft-dialog-inline-filter {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  bottom: auto !important;
+  right: auto !important;
+  margin: 0 0 1rem 0 !important;
+  z-index: 5 !important;
+  padding: 0;
+}
+
+/* Header and Footer */
+
+.ft-dialog-header {
+  display: inline-block;
+  text-transform: uppercase;
+  color: var(--ft-dialog-header-color);
+  @apply --ft-dialog-header;
+}
+
+.ft-dialog-footer {
+  /* @apply --layout-horizontal; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  @apply --ft-dialog-footer;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.flex-space-helper {
+  /* @apply --layout-flex-auto; */
+  -ms-flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+/* Close icon */
+
+.ft-dialog-close-icon {
+  position: absolute;
+  z-index: 10;
+  top: -1rem;
+  right: -1rem;
+}
+
+.ft-dialog-close-icon iron-icon,
+.ft-dialog-close-icon paper-icon-button {
+  width: 2rem;
+  height: 2rem;
+  color: var(--ft-dialog-close-icon-color);
+}
+
+.ft-dialog-tabs {
+  /* @apply --layout; */
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 26px;
+  flex: 0 0 26px;
+}
+
+.ft-dialog-tab {
+  flex: 1 1 auto;
+  text-align: center;
+  font-weight: 500;
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  padding: 0.25rem 0;
+  cursor: pointer;
+  color: var(--ft-dialog-tab-color);
+  border-bottom: solid 2px var(--ft-dialog-tab-border-color);
+}
+
+.ft-dialog-tab.iron-selected {
+  color: var(--ft-dialog-tab-active-color);
+  border-bottom: solid 2px var(--ft-dialog-tab-border-active-color);
+}

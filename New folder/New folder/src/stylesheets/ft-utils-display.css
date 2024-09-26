@@ -1,0 +1,193 @@
+/* Hidden attr display */
+
+:host([hidden]),
+[hidden] {
+  display: none !important;
+}
+
+/* Adds space to the bottom to show content under sticky footer */
+
+:host([has-footer]) {
+  padding-bottom: 6rem;
+}
+
+/* Display */
+
+.u-display--b {
+  display: block;
+}
+.u-display--ib {
+  display: inline-block;
+}
+.u-display--g {
+  display: -ms-grid;
+  display: grid;
+}
+.u-display--ig {
+  display: -ms-inline-grid;
+  display: inline-grid;
+}
+.u-display--n {
+  display: none;
+}
+
+/* Position */
+
+.u-position--r {
+  position: relative;
+}
+.u-position--a {
+  position: absolute;
+}
+.u-position--s {
+  position: static;
+}
+
+/* Vertical-align */
+
+.u-valign--t {
+  vertical-align: top;
+}
+.u-valign--m {
+  vertical-align: middle;
+}
+.u-valign--b {
+  vertical-align: bottom;
+}
+
+/* Overflow */
+
+.u-overflow--h {
+  overflow: hidden;
+}
+.u-overflow--a {
+  overflow: auto;
+}
+
+/* Clearing utils & float */
+/* Best practive: Do not use */
+
+.u-clearfix::after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+/* Float */
+
+.u-float--n,
+.u-float-n {
+  float: none;
+}
+.u-float--l,
+.u-float-l {
+  float: left;
+}
+.u-float--r,
+.u-float-r {
+  float: right;
+}
+
+/* Hide/show util */
+
+.u-hide--xs,
+.u-hide--sm,
+.u-hide--md {
+  display: block;
+}
+@media (min-width: 48rem) {
+  .u-hide--xs {
+    display: none;
+  }
+}
+@media (min-width: 64rem) {
+  .u-hide--sm {
+    display: none;
+  }
+}
+@media (min-width: 1191px) {
+  .u-hide--md {
+    display: none;
+  }
+}
+
+.u-show--xs,
+.u-show--sm,
+.u-show--md {
+  display: none;
+}
+@media (min-width: 48rem) {
+  .u-show--xs {
+    display: block;
+  }
+}
+@media (min-width: 64rem) {
+  .u-show--sm {
+    display: block;
+  }
+}
+@media (min-width: 1191px) {
+  .u-show--md {
+    display: block;
+  }
+}
+
+/* Other */
+
+.u-inherit--height {
+  height: inherit;
+}
+
+/* Display helpers */
+
+.is-disabled,
+.is-disabled-true {
+  /* @apply --disabled; */
+  opacity: .6;
+  pointer-events: none;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.has-display-true {
+  display: inline-block;
+  visibility: visible;
+}
+
+.has-display-false {
+  display: none;
+  visibility: hidden;
+}
+
+.is-hidden-true {
+  display: none;
+  visibility: hidden;
+}
+
+.is-hidden-false {
+  display: inline-block;
+  visibility: visible;
+}
+
+.is-faded,
+.is-faded-true {
+  opacity: 0;
+}
+
+.faded-list {
+  opacity: 0.5;
+}
+
+.faded-list .is-handle {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.is-muted,
+.is-muted-true {
+  opacity: 0.4;
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}

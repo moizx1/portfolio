@@ -1,0 +1,304 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-input/paper-input-behavior.html">
+<link rel="import" href="../ft-uif-icons/ft-uif-icons-font.html">
+<link rel="import" href="ft-uic-input-shared-styles.html">
+
+<!--
+TODO:
+- update this description.
+- remove suffix and prefix from ft-uic-input
+- update ft-uic-input with the readonly property
+
+### Styling
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--ft-uic-input-input` | Mixin for input element | {}
+`--ft-uic-input-background` | background color for input | `--ft-blue-300`
+`--ft-uic-input-color` | text color for input | `--ft-white`
+`--ft-uic-input-border-radius` | border-radius for input | `.125rem`
+`--ft-uic-input-font-size` | font-size for input | `.750rem`
+`--ft-uic-input-font-weight` | font-weight for input | `500`
+
+@demo demo/index.html Regular
+@demo demo/addons.html Addons
+-->
+
+<dom-module id="ft-uic-input">
+  <template>
+    <style include="ft-uic-input-shared-styles ft-ico-font">
+      .input-field {
+        /** overwrite */
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      :host([as-nav-element]) .input-field-container {
+        --ft-uic-input-background: transparent;
+        --ft-uic-input-container-input-box-shadow: none;
+        --ft-uic-input-container-input-box-shadow-focus: none;
+      }
+      :host([autocapitalize]) input {
+        text-transform: uppercase;
+      }
+    </style>
+
+    <label hidden$="[[!label]]" for$="[[_inputId]]">[[label]]</label>
+
+    <div class="input-field-container">
+      <div class="simple-flex"><!-- single div needed to flex the suffix and prefix -->
+        <slot class="input-slot-prefix" name="prefix"></slot>
+        <div class="input-field">
+          <input id$="[[_inputId]]" value="{{value::input}}" aria-labelledby$="[[ariaLabelledby]]" aria-describedby$="[[ariaDescribedby]]"
+          disabled$="[[disabled]]" title$="[[title]]" type$="[[type]]" pattern$="[[pattern]]" required$="[[required]]"
+          autocomplete$="[[autocomplete]]" autofocus$="[[autofocus]]" inputmode$="[[inputmode]]" minlength$="[[minlength]]"
+          maxlength$="[[maxlength]]" min$="[[min]]" max$="[[max]]" step$="[[step]]" name$="[[name]]" placeholder$="[[placeholder]]"
+          readonly$="[[readonly]]" list$="[[list]]" size$="[[size]]" autocorrect$="[[autocorrect]]"
+          tabindex$="[[tabindex]]" autosave$="[[autosave]]" results$="[[results]]" accept$="[[accept]]" multiple$="[[multiple]]"
+          on-input="_onInput"
+          on-blur="_handleBlur"
+          on-change="_onChange">
+          <i id="readonlyIcon" class="ico-locked readonly-icon"></i>
+        </div>
+        <slot class="input-slot-suffix" name="suffix"></slot>
+      </div>
+    </div>
+
+    <template is="dom-if" if="[[!hideErrorMessage]]">
+      <div class="add-on-content">
+        <div class="error" aria-live="assertive" title="[[errorMessage]]" hidden$="[[!invalid]]">
+          [[errorMessage]]
+        </div>
+      </div>
+    </template>
+
+  </template>
+  <script>
+    class FtUicInput extends
+      Polymer.mixinBehaviors([Polymer.PaperInputBehavior], Polymer.Element) {
+
+      static get is() {
+        return 'ft-uic-input';
+      }
+
+      static get properties() {
+        return {
+          /**
+           * Boolean if the input is disabled
+           * @type {Boolean}
+           */
+          disabled: Boolean,
+
+          /**
+           * Boolean if the input is read only
+           * @type {Boolean}
+           */
+          readonly: {
+            type: Boolean,
+            reflectToAttribute: true,
+          },
+
+          allowTrim: {
+            type: Boolean,
+            value: true,
+            reflectToAttribute: true,
+          },
+
+          asNavElement: {
+            type: Boolean,
+            reflectToAttribute: true,
+            value: false,
+          },
+
+          /**
+           * @type {Boolean}
+           */
+          autofocus: {
+            type: Boolean,
+            value: false
+          },
+
+           /**
+           * @type {Boolean}
+           */
+           autocapitalize: {
+            type: Boolean,
+            reflectToAttribute: true,
+            value: false
+          },
+          /**
+          * Boolean if the validation has failed
+          * @type {Boolean}
+          */
+          invalid: {
+            type: Boolean,
+            reflectToAttribute: true,
+            notify: true,
+            value: false
+          },
+
+          /**
+           * When set to true, user is prevented from typing a value that
+           * conflicts with the given `pattern`.
+           * @type {Boolean}
+           */
+          preventInvalidInput: Boolean,
+
+          /**
+           * The name of this element.
+           * @type {String}
+           */
+          name: String,
+
+          label: {
+            Type: String,
+            reflectToAttribute: true,
+            value: false,
+          },
+
+          /**
+           * The initial value of the control.
+           * It can be used for two-way data binding.
+           * @type {String}
+           */
+          value: {
+            type: String,
+            value: '',
+            observer: '_valueChanged',
+            notify: true
+          },
+
+          /**
+           * Set to true to always validate instead of looking at the dirty touched state
+           * @type {Boolean}
+           */
+          forceShowError: {
+            type: Boolean,
+            value: false
+          },
+
+          /**
+           * Represents whether input is dirty or not
+           * @type {Boolean}
+           */
+          dirty: {
+            type: Boolean,
+            value: false,
+            readOnly: true
+          },
+          hideErrorMessage: {
+            type: Boolean,
+            value: false,
+          }
+        };
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this._handleForceShowError();
+      }
+
+      _autofocusChanged() {
+        if(this.autofocus && this._focusableElement) {
+          this._focusableElement.focus();
+        }
+      }
+
+      _onChange(event) {
+        this.inputElement.value = this.allowTrim ? this.value.trim() : this.value;
+        // In the Shadow DOM, the `change` event is not leaked into the
+        // ancestor tree, so we must do this manually.
+        // See
+        // https://w3c.github.io/webcomponents/spec/shadow/#events-that-are-not-leaked-into-ancestor-trees.
+        if (this.shadowRoot) {
+          this.fire(
+            event.type,
+            { sourceEvent: event },
+            { node: this, bubbles: event.bubbles, cancelable: event.cancelable });
+        }
+      }
+
+      _handleForceShowError() {
+        if (this.forceShowError) {
+          this.validate();
+        }
+      }
+
+      /**
+       * Returns true if `value` is valid.
+       * `<iron-form>` uses this to check the validity or all its elements.
+       *
+       * @return {boolean} True if the value is valid.
+       */
+      validate() {
+        let isValid = this.checkValidity();
+        if (isValid && this.minlength && this.value) {
+          isValid = this.value.toString().length >= parseFloat(this.minlength);
+        }
+        if (isValid && this.maxlength && this.value) {
+          isValid = this.value.toString().length <= parseFloat(this.maxlength);
+        }
+        this.invalid = !isValid;
+        return !this.invalid;
+      }
+
+      /**
+       * Depreciated. Use `reset` method.
+       */
+      clear() {
+        this.reset();
+      }
+
+      /**
+       * Clears the inputElement. It will also erase validation and interaction states.
+       */
+      reset() {
+        this.value = '';
+        this.invalid = false;
+        this._setDirty(false);
+      }
+
+      /**
+       * Returns true if the current input is valid
+       * Contraints can be added if invalid value is to be controlled via outside
+       * But their change hanlders should be implemeneted.
+       *
+       * @returns {boolean}
+       */
+      checkValidity() {
+        return this.inputElement.checkValidity();
+      }
+
+      _onInput() {
+        if (this.preventInvalidInput) {
+          const input = this.inputElement;
+          if (input.value.length > 0 && !this.checkValidity()) {
+            input.value = this.value || '';
+          }
+        }
+        this._setDirty(true);
+      }
+
+      _valueChanged(newVal, oldVal) {
+        // setting initial value to empty string, skip validation
+        if (newVal === '' && oldVal === undefined) {
+          return;
+        }
+        if(typeof newVal === 'undefined'){
+          return;
+        }
+
+        if (this.auto-Validate) {
+          this.validate();
+        }
+      }
+
+      _handleBlur(e) {
+        if(this.value != null && this.allowTrim) {
+          this.value = this.value.toString().trim();
+        }
+      }
+    }
+
+    window.customElements.define(FtUicInput.is, FtUicInput);
+  </script>
+</dom-module>

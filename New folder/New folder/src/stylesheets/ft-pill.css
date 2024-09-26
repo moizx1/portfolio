@@ -1,0 +1,33 @@
+.ft-pill {
+  background-color: var(--ft-pill-background, var(--ft-grey-200));
+  color: var(--ft-pill-color, var(--ft-grey-500));
+  font-size: var(--ft-pill-font-size, 13px);
+  border-radius: 10px;
+  padding: var(--ft-pill-padding, .250rem .500rem);
+  box-sizing: border-box;
+  line-height: 1;
+  height: 21px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ft-pill--primary {
+  background-color: var(--ft-icon-color);
+  color: var(--ft-white-100);
+}
+
+.ft-pill--success {
+  background-color: var(--ft-green-300);
+  color: var(--ft-white-100);
+}
+
+.ft-pill--danger {
+  background-color: var(--ft-red-300);
+  color: var(--ft-white-100);
+}
+
+.ft-pill--pending,
+.ft-pill--warning {
+  background-color: var(--ft-yellow-100);
+  color: var(--ft-orange-900);
+}

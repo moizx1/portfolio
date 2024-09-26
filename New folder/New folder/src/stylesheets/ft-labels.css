@@ -1,0 +1,48 @@
+.label-container-display {
+  display: block;
+}
+
+.label-container {
+  float: left;
+  width: max-content;
+  padding: .250rem;
+  max-width: 75px;
+  margin-bottom: 2.5px;
+  margin-right: 4.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ft-label-color);
+  background-color: var(--ft-label-background);
+  @apply --ft-label;
+}
+
+.ft-label {
+  /* @apply --ft-uic-input-container-label; */
+  color: var(--ft-grey-300);
+  font-size: var(--ft-app-font-size);
+  text-transform: uppercase;
+  font-weight: 500;
+  display: block;
+  padding: 4px 0 2px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-badge {
+  color: var(--ft-badge-color);
+  background-color: var(--ft-badge-background-color);
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  border-radius: .125rem;
+  padding: .125rem .250rem;
+  width: fit-content;
+  align-self: baseline;
+  display: inline;
+}
+
+.file-badge-xlsx { background-color: #3A97D9; }
+.file-badge-csv { background-color: #8C8C8C; }
+.file-badge-pdf { background-color: indianred; }
