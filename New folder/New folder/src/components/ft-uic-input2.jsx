@@ -38,6 +38,9 @@ const FcUitInput2 = ({
   onChange: externalOnChange,
   onBlur: externalOnBlur,
   onFocus: externalOnFocus,
+  // Add slots for prefix and suffix
+  prefix = null,
+  suffix = null,
 }) => {
   const [value, setValue] = useState(initialValue);
   const [isFocused, setIsFocused] = useState(initialFocused);
@@ -46,7 +49,7 @@ const FcUitInput2 = ({
   const [initialized, setInitialized] = useState(false);
 
   const inputRef = useRef(null);
-  const host = useRef(null)
+  const host = useRef(null);
 
   useEffect(() => {
     setComponentLoaded(true);
@@ -130,19 +133,24 @@ const FcUitInput2 = ({
   ]);
 
   useEffect(() => {
-    if (readonly) {
-        host.current.setAttribute('readonly', true);
-    } else {
-      host.current.removeAttribute('readonly');
-    }
-}, [readonly])
+    const attributes = { readonly, invalid: isInvalid, disabled, required };
+    
+    Object.keys(attributes).forEach((attr) => {
+      if (attributes[attr]) {
+        host.current.setAttribute(attr, true);
+      } else {
+        host.current.removeAttribute(attr);
+      }
+    });
+  }, [readonly, isInvalid, disabled, required]);
 
   return (
-    <div className="host"  ref={host}>
+    <div className="host" ref={host}>
       {label && <label htmlFor={inputId}>{label}</label>}
       <div className="input-field-container">
         <div className="simple-flex">
-          <slot className="input-slot-prefix" name="prefix" />
+          {/* Render the custom prefix slot content */}
+          {prefix && <div className="input-slot-prefix">{prefix}</div>}
           <div className="input-field">
             <input
               ref={inputRef}
@@ -162,6 +170,7 @@ const FcUitInput2 = ({
               max={max}
               tabIndex={tabindex}
               autoSave={autosave}
+              autoCapitalize={autocapitalize}
               results={results}
               accept={accept}
               multiple={multiple}
@@ -172,7 +181,8 @@ const FcUitInput2 = ({
             />
             {readonly && <i className="ico-locked readonly-icon"></i>}
           </div>
-          <slot className="input-slot-suffix" name="suffix"></slot>
+          {/* Render the custom suffix slot content */}
+          {suffix && <div className="input-slot-suffix">{suffix}</div>}
         </div>
       </div>
       {isInvalid && !hideErrorMessage && (

@@ -1,4 +1,5 @@
 @import "ft-theme-light.css";
+@import "ft-theme-dark.css";
 @import "iron-flex-layout.css";
 @import "ft-uif-icons-font.css";
 @import "color.css";
@@ -9,6 +10,7 @@
   position: relative;
   outline: none;
   display: block;
+  
 }
 
 .host[label] {

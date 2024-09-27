@@ -14,7 +14,7 @@
   text-overflow: ellipsis;
   color: var(--ft-label-color);
   background-color: var(--ft-label-background);
-  @apply --ft-label;
+  /* @apply --ft-label; */
 }
 
 .ft-label {
