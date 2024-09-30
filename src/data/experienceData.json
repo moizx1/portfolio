@@ -1,20 +1,20 @@
 [
   {
     "id": 1,
-    "role": "Flutter Intern",
-    "company": "RootPointers",
-    "location": "Canal View, Lahore",
-    "date": "June 2023 - August 2023",
-    "description": "Worked on mobile application development with Flutter. Focused on building an e-learning platform with Firebase and GetX, integrating real-time chat and notifications.",
-    "technologies": ["Flutter", "GetX", "Firebase", "Agora RTX"]
+    "role": "Associate Software Engineer",
+    "company": "REDMATH",
+    "location": "Lahore",
+    "date": "July 2024 - Present",
+    "description": "Currently working as a full stack developer. Worked on Springboot and React Js.",
+    "technologies": ["Springboot", "ReactJs"]
   },
   {
     "id": 2,
-    "role": "Final Year Project",
-    "company": "University of Engineering and Technology, Lahore",
-    "location": "Lahore",
-    "date": "2020 - 2024",
-    "description": "Developed a Bitcoin price prediction system through sentimental analysis on Twitter. Focused on artificial intelligence and emotion detection using Convolutional Neural Networks (CNN).",
-    "technologies": ["Python", "CNN", "Twitter API"]
+    "role": "Flutter Intern",
+    "company": "RootPointers",
+    "location": "Canal View, Lahore",
+    "date": "June 2023 - September 2023",
+    "description": "Worked on mobile application development with Flutter. Focused on building an e-learning platform with Firebase and GetX, integrating real-time chat and notifications.",
+    "technologies": ["Flutter", "GetX", "Firebase", "Agora RTC Engine"]
   }
 ]
