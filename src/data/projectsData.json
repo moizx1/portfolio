@@ -1,38 +1,43 @@
 [
   {
     "id": 1,
+    "title": "Banking Application",
+    "description": "Built a full-stack banking application using Spring Boot for the backend and React for the frontend. Implemented account management, transaction tracking, and secure authentication using JWT.",
+    "technologies": [
+      "React",
+      "Spring Boot",
+      "MySQL",
+      "Authentication and Authorization",
+      "12 Factor",
+      "Spring Security",
+      "Clean Code",
+      "Testing"
+    ],
+    "githubLink": "https://github.com/moizx1/rm-assignment",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 1,
     "title": "TeLead E-Learning App",
     "description": "Created an e-learning platform frontend using GetX for efficient state management and clean code architecture. Integrated chat and call functionality with Firebase and Agora RTX. Enhanced chat notifications with Firebase Cloud Messaging.",
     "technologies": ["Flutter", "GetX", "Firebase", "Agora RTX"],
-    "githubLink": "https://github.com/yourusername/telead-elearning",
-    "image": "https://via.placeholder.com/400x300",
-    "liveDemo": "https://yourdemo.com/telead"
-  },
-  {
-    "id": 2,
-    "title": "Portfolio Website",
-    "description": "Designed and developed a personal portfolio website to showcase projects and skills. Implemented a responsive layout with React and Tailwind CSS.",
-    "technologies": ["React", "Tailwind CSS", "JavaScript"],
-    "githubLink": "https://github.com/yourusername/portfolio-website",
-    "image": "https://via.placeholder.com/400x300",
-    "liveDemo": "https://yourportfolio.com"
+    "githubLink": "https://github.com/moizx1/telead_e_learning",
+    "image": "https://via.placeholder.com/400x300"
   },
   {
     "id": 3,
-    "title": "Banking Application",
-    "description": "Built a full-stack banking application using Spring Boot for the backend and React for the frontend. Implemented account management, transaction tracking, and secure authentication using JWT.",
-    "technologies": ["React", "Spring Boot", "MySQL", "JWT"],
-    "githubLink": "https://github.com/yourusername/banking-app",
-    "image": "https://via.placeholder.com/400x300",
-    "liveDemo": "https://yourdemo.com/banking"
-  },
-  {
-    "id": 4,
     "title": "YOLO Food Ordering Platform",
     "description": "Developed an on-demand food ordering platform. Integrated customer and vendor apps, secure authentication with OAuth 2.0, and custom recipe creation with AI assistance.",
     "technologies": ["React", "Spring Boot", "OAuth 2.0", "MySQL"],
-    "githubLink": "https://github.com/yourusername/yolo-food-ordering",
-    "image": "https://via.placeholder.com/400x300",
-    "liveDemo": "https://yourdemo.com/yolo"
+    "githubLink": "https://github.com/sharjeelnisar2/yolo-customer-BE",
+    "image": "https://via.placeholder.com/400x300"
+  },
+  {
+    "id": 4,
+    "title": "FINAL YEAR PROJECT: Bitcoin Price Prediction System through Sentimental analysis on Twitter",
+    "description": "Developed a Flutter app along with django backend with integrated BERT model to calculate polarities of realtime twitter data and compare it with live trends of bitcoin displayed in the form of different graphs.",
+    "technologies": ["Flutter", "Django", "AI"],
+    "githubLink": "https://github.com/moizx1/bitvision_fyp",
+    "image": "https://via.placeholder.com/400x300"
   }
 ]
