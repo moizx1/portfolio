@@ -28,7 +28,7 @@ export default function Navbar({ activeSection }) {
           className={`transition-colors duration-300 px-6 py-2 rounded-full ${mobile ? "block w-full text-left" : ""}
             ${
               activeSection === link.to
-                ? "bg-blue-600/70 hover:bg-blue-600 text-white"
+                ? "bg-blue-600/70 hover:bg-blue-500 text-white"
                 : "text-indigo-200 hover:bg-white hover:text-blue-600"
             }`}
           onClick={() => scrollToSection(link.to)}

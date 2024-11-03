@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #010b15;
+  background: #010b15;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,18 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
 /* Floating Dots Animation */
 .floating-dots {
   position: relative;
@@ -77,4 +65,28 @@
   100% {
     transform: translateY(0);
   }
+}
+.intro-bubble::after {
+  content: '';
+  border-bottom-left-radius: 45% 20%;
+  border-bottom-right-radius: 45% 20%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  background: linear-gradient(to bottom right, #010b15, rgb(30, 58, 138));
+  height: 100%;
+}
+.bubble::after {
+  content: '';
+  border-top-left-radius: 12% 6%;
+  border-top-right-radius: 40% 2%;
+  /* border-bottom-right-radius: 0% 6%;
+  border-bottom-left-radius: 40% 4%; */
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  background: linear-gradient(to bottom right, #010b15, rgb(30, 58, 138));
+  height: 100%;
 }

@@ -17,7 +17,7 @@
     "image": "https://via.placeholder.com/400x300"
   },
   {
-    "id": 1,
+    "id": 2,
     "title": "TeLead E-Learning App",
     "description": "Created an e-learning platform frontend using GetX for efficient state management and clean code architecture. Integrated chat and call functionality with Firebase and Agora RTX. Enhanced chat notifications with Firebase Cloud Messaging.",
     "technologies": ["Flutter", "GetX", "Firebase", "Agora RTX"],

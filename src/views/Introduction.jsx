@@ -4,7 +4,7 @@ import resume from "../assets/Am ASE.pdf";
 
 export default function Introduction() {
   return (
-    <div className="min-h-screen relative flex flex-col-reverse md:flex-row items-center justify-center font-mono gap-8 md:gap-28 bg-gradient-to-br from-[#010b15] to-blue-900 px-4 py-8">
+    <div className="intro-bubble relative min-h-screen flex flex-col-reverse md:flex-row items-center justify-center font-mono gap-8 md:gap-28 px-4 py-8">
       <div className="flex flex-col items-center text-center md:text-left md:items-start justify-center z-10">
         <span className="block text-lg md:text-xl font-semibold mb-2 md:mb-4">
           Hello, I am

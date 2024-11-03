@@ -22,25 +22,25 @@ export default function Skills() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col py-12 bg-gradient-to-br from-[#010b15] to-blue-900">
-      <h1 className="text-5xl font-bold mb-16 text-center font-mono text-white">
-        Skills
-      </h1>
-      <div className="flex flex-1 justify-center items-center pb-16">
-        <div className="w-10/12 md:w-3/4 lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-6">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center rounded-md border border-blue-400 p-3 bg-white/10 backdrop-blur-md"
-            >
-              <div className="text-6xl">{skill.icon}</div>
-              <p className="text-sm font-semibold text-gray-300 mt-2">
-                {skill.name}
-              </p>
-            </div>
-          ))}
-        </div>
+    <div className="min-h-screen flex flex-col py-12">
+    <h1 className="text-5xl font-bold mb-16 text-center font-mono text-white">
+      Skills
+    </h1>
+    <div className="flex flex-1 justify-center items-center pb-16">
+      <div className="w-10/12 md:w-3/4 lg:w-1/2 grid grid-cols-2 md:grid-cols-3 gap-6">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="min-w-20 flex flex-col items-center rounded-md border border-blue-800 p-3 bg-white/10 backdrop-blur-md"
+          >
+            <div className="text-6xl">{skill.icon}</div>
+            <p className="text-sm font-semibold text-gray-300 mt-2">
+              {skill.name}
+            </p>
+          </div>
+        ))}
       </div>
     </div>
+  </div>
   );
 }

@@ -8,7 +8,7 @@ export default function HoverLinks() {
         <a href="https://github.com/moizx1" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
           <FaGithub size={24} />
         </a>
-        <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+        <a href="https://www.linkedin.com/in/abdul-muiz-866756200" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
           <FaLinkedin size={24} />
         </a>
       </div>
