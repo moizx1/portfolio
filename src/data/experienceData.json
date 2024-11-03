@@ -5,7 +5,8 @@
     "company": "REDMATH",
     "location": "Lahore",
     "date": "July 2024 - Present",
-    "description": "Currently working as a full stack developer. Worked on Springboot and React Js.",
+    "description": "• Contributed to the development of COBASE, a large-scale multi-bank platform utilized by 1,500 banks across Europe.\n• Enhanced secure API integrations and migrated front-end systems from Polymer to modern frameworks like React and Vue.js.\n• Implemented secure REST APIs in Java with Spring Boot, following OWASP security guidelines.\n• Applied clean code standards, including Checkstyle and SpotBugs, to ensure maintainable and robust code.\n• Developed and tested scalable backend solutions while improving user experience with a focus on performance, security, and modern design principles.\n• Contributed to code reviews and technical documentation to maintain high software quality standards."
+,
     "technologies": ["Springboot", "ReactJs"]
   },
   {

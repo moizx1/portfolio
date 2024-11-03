@@ -16,7 +16,7 @@ export default function ExperienceCard({ experience }) {
       <p className="font-semibold">
         {experience.company}, {experience.location}
       </p>
-      <p className="text-xs md:text-sm mb-2">{experience.date}</p>
+      <span className="text-xs md:text-sm mb-2">{experience.date}</span>
       <p className={`text-sm text-justify ${!showMore ? "line-clamp-3" : ""}`}>
         {experience.description}
       </p>
